@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */; };
+		4E44A5FA1DDA60EB0085EF07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5F91DDA60EB0085EF07 /* ViewController.swift */; };
+		4E44A5FD1DDA60EB0085EF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */; };
+		4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5FE1DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld */; };
+		4E44A6021DDA60EB0085EF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E44A6011DDA60EB0085EF07 /* Assets.xcassets */; };
+		4E44A6051DDA60EB0085EF07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */; };
+		4E44A6101DDA60EB0085EF07 /* Arti_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A60F1DDA60EB0085EF07 /* Arti_ChatTests.swift */; };
+		4E44A61B1DDA60EB0085EF07 /* Arti_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A61A1DDA60EB0085EF07 /* Arti_ChatUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4E44A60C1DDA60EB0085EF07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E44A5EC1DDA60EB0085EF07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E44A5F31DDA60EB0085EF07;
+			remoteInfo = "Arti-Chat";
+		};
+		4E44A6171DDA60EB0085EF07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E44A5EC1DDA60EB0085EF07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E44A5F31DDA60EB0085EF07;
+			remoteInfo = "Arti-Chat";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4E44A5F41DDA60EB0085EF07 /* Arti-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arti-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E44A5F91DDA60EB0085EF07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E44A5FC1DDA60EB0085EF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E44A5FF1DDA60EB0085EF07 /* Arti_Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arti_Chat.xcdatamodel; sourceTree = "<group>"; };
+		4E44A6011DDA60EB0085EF07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E44A6041DDA60EB0085EF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E44A6061DDA60EB0085EF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E44A60B1DDA60EB0085EF07 /* Arti-ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Arti-ChatTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E44A60F1DDA60EB0085EF07 /* Arti_ChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arti_ChatTests.swift; sourceTree = "<group>"; };
+		4E44A6111DDA60EB0085EF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E44A6161DDA60EB0085EF07 /* Arti-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Arti-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E44A61A1DDA60EB0085EF07 /* Arti_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arti_ChatUITests.swift; sourceTree = "<group>"; };
+		4E44A61C1DDA60EB0085EF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E44A5F11DDA60EB0085EF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6081DDA60EB0085EF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6131DDA60EB0085EF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E44A5EB1DDA60EB0085EF07 = {
+			isa = PBXGroup;
+			children = (
+				4E44A5F61DDA60EB0085EF07 /* Arti-Chat */,
+				4E44A60E1DDA60EB0085EF07 /* Arti-ChatTests */,
+				4E44A6191DDA60EB0085EF07 /* Arti-ChatUITests */,
+				4E44A5F51DDA60EB0085EF07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4E44A5F51DDA60EB0085EF07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E44A5F41DDA60EB0085EF07 /* Arti-Chat.app */,
+				4E44A60B1DDA60EB0085EF07 /* Arti-ChatTests.xctest */,
+				4E44A6161DDA60EB0085EF07 /* Arti-ChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E44A5F61DDA60EB0085EF07 /* Arti-Chat */ = {
+			isa = PBXGroup;
+			children = (
+				4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */,
+				4E44A5F91DDA60EB0085EF07 /* ViewController.swift */,
+				4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */,
+				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
+				4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */,
+				4E44A6061DDA60EB0085EF07 /* Info.plist */,
+				4E44A5FE1DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld */,
+			);
+			path = "Arti-Chat";
+			sourceTree = "<group>";
+		};
+		4E44A60E1DDA60EB0085EF07 /* Arti-ChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E44A60F1DDA60EB0085EF07 /* Arti_ChatTests.swift */,
+				4E44A6111DDA60EB0085EF07 /* Info.plist */,
+			);
+			path = "Arti-ChatTests";
+			sourceTree = "<group>";
+		};
+		4E44A6191DDA60EB0085EF07 /* Arti-ChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4E44A61A1DDA60EB0085EF07 /* Arti_ChatUITests.swift */,
+				4E44A61C1DDA60EB0085EF07 /* Info.plist */,
+			);
+			path = "Arti-ChatUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E44A5F31DDA60EB0085EF07 /* Arti-Chat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E44A61F1DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-Chat" */;
+			buildPhases = (
+				4E44A5F01DDA60EB0085EF07 /* Sources */,
+				4E44A5F11DDA60EB0085EF07 /* Frameworks */,
+				4E44A5F21DDA60EB0085EF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Arti-Chat";
+			productName = "Arti-Chat";
+			productReference = 4E44A5F41DDA60EB0085EF07 /* Arti-Chat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4E44A60A1DDA60EB0085EF07 /* Arti-ChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E44A6221DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-ChatTests" */;
+			buildPhases = (
+				4E44A6071DDA60EB0085EF07 /* Sources */,
+				4E44A6081DDA60EB0085EF07 /* Frameworks */,
+				4E44A6091DDA60EB0085EF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E44A60D1DDA60EB0085EF07 /* PBXTargetDependency */,
+			);
+			name = "Arti-ChatTests";
+			productName = "Arti-ChatTests";
+			productReference = 4E44A60B1DDA60EB0085EF07 /* Arti-ChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4E44A6151DDA60EB0085EF07 /* Arti-ChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E44A6251DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-ChatUITests" */;
+			buildPhases = (
+				4E44A6121DDA60EB0085EF07 /* Sources */,
+				4E44A6131DDA60EB0085EF07 /* Frameworks */,
+				4E44A6141DDA60EB0085EF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E44A6181DDA60EB0085EF07 /* PBXTargetDependency */,
+			);
+			name = "Arti-ChatUITests";
+			productName = "Arti-ChatUITests";
+			productReference = 4E44A6161DDA60EB0085EF07 /* Arti-ChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E44A5EC1DDA60EB0085EF07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Team Rick";
+				TargetAttributes = {
+					4E44A5F31DDA60EB0085EF07 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5HCB9SF4EZ;
+						ProvisioningStyle = Automatic;
+					};
+					4E44A60A1DDA60EB0085EF07 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5HCB9SF4EZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4E44A5F31DDA60EB0085EF07;
+					};
+					4E44A6151DDA60EB0085EF07 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5HCB9SF4EZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4E44A5F31DDA60EB0085EF07;
+					};
+				};
+			};
+			buildConfigurationList = 4E44A5EF1DDA60EB0085EF07 /* Build configuration list for PBXProject "Arti-Chat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E44A5EB1DDA60EB0085EF07;
+			productRefGroup = 4E44A5F51DDA60EB0085EF07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E44A5F31DDA60EB0085EF07 /* Arti-Chat */,
+				4E44A60A1DDA60EB0085EF07 /* Arti-ChatTests */,
+				4E44A6151DDA60EB0085EF07 /* Arti-ChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E44A5F21DDA60EB0085EF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E44A6051DDA60EB0085EF07 /* LaunchScreen.storyboard in Resources */,
+				4E44A6021DDA60EB0085EF07 /* Assets.xcassets in Resources */,
+				4E44A5FD1DDA60EB0085EF07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6091DDA60EB0085EF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6141DDA60EB0085EF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E44A5F01DDA60EB0085EF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E44A5FA1DDA60EB0085EF07 /* ViewController.swift in Sources */,
+				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
+				4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6071DDA60EB0085EF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E44A6101DDA60EB0085EF07 /* Arti_ChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E44A6121DDA60EB0085EF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E44A61B1DDA60EB0085EF07 /* Arti_ChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4E44A60D1DDA60EB0085EF07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E44A5F31DDA60EB0085EF07 /* Arti-Chat */;
+			targetProxy = 4E44A60C1DDA60EB0085EF07 /* PBXContainerItemProxy */;
+		};
+		4E44A6181DDA60EB0085EF07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E44A5F31DDA60EB0085EF07 /* Arti-Chat */;
+			targetProxy = 4E44A6171DDA60EB0085EF07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E44A5FC1DDA60EB0085EF07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E44A6041DDA60EB0085EF07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E44A61D1DDA60EB0085EF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E44A61E1DDA60EB0085EF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E44A6201DDA60EB0085EF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-Chat/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-Chat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4E44A6211DDA60EB0085EF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-Chat/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-Chat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4E44A6231DDA60EB0085EF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-ChatTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-ChatTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arti-Chat.app/Arti-Chat";
+			};
+			name = Debug;
+		};
+		4E44A6241DDA60EB0085EF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-ChatTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-ChatTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arti-Chat.app/Arti-Chat";
+			};
+			name = Release;
+		};
+		4E44A6261DDA60EB0085EF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-ChatUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-ChatUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Arti-Chat";
+			};
+			name = Debug;
+		};
+		4E44A6271DDA60EB0085EF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				INFOPLIST_FILE = "Arti-ChatUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-ChatUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Arti-Chat";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E44A5EF1DDA60EB0085EF07 /* Build configuration list for PBXProject "Arti-Chat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E44A61D1DDA60EB0085EF07 /* Debug */,
+				4E44A61E1DDA60EB0085EF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E44A61F1DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-Chat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E44A6201DDA60EB0085EF07 /* Debug */,
+				4E44A6211DDA60EB0085EF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4E44A6221DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-ChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E44A6231DDA60EB0085EF07 /* Debug */,
+				4E44A6241DDA60EB0085EF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4E44A6251DDA60EB0085EF07 /* Build configuration list for PBXNativeTarget "Arti-ChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E44A6261DDA60EB0085EF07 /* Debug */,
+				4E44A6271DDA60EB0085EF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E44A5FE1DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E44A5FF1DDA60EB0085EF07 /* Arti_Chat.xcdatamodel */,
+			);
+			currentVersion = 4E44A5FF1DDA60EB0085EF07 /* Arti_Chat.xcdatamodel */;
+			path = Arti_Chat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4E44A5EC1DDA60EB0085EF07 /* Project object */;
+}
