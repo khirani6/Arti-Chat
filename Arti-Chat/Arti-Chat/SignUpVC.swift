@@ -20,9 +20,6 @@ class SignUpVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func etsyButtonPressed(_ sender: UIButton) {
-        
-    }
 
 
 }

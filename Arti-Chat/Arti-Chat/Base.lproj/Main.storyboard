@@ -37,7 +37,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="etsyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zvL-My-Ahu"/>
+                                    <segue destination="qUZ-MS-aNA" kind="popoverPresentation" popoverAnchorView="1ac-fl-cCG" id="Ecx-EL-WPT">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arti-Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-As-baB">
@@ -61,6 +63,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="136.26760563380282"/>
+        </scene>
+        <!--Etsy LoginVC-->
+        <scene sceneID="u82-MB-1If">
+            <objects>
+                <viewController id="qUZ-MS-aNA" customClass="EtsyLoginVC" customModule="Arti_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UKS-43-LVv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fx9-GO-Y4i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B73-Z9-SZY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p0-jK-uCs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="etsyWebView" destination="8p0-jK-uCs" id="WvW-dN-6hj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wU6-Y0-81b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806.25" y="136.26760563380282"/>
         </scene>
     </scenes>
 </document>

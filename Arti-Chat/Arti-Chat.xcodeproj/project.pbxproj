@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */; };
 		4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */; };
 		4E44A5FD1DDA60EB0085EF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */; };
 		4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5FE1DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtsyLoginVC.swift; sourceTree = "<group>"; };
 		4E44A5F41DDA60EB0085EF07 /* Arti-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arti-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E44A5FC1DDA60EB0085EF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				4E44A6281DDA648A0085EF07 /* SignUpVC.swift */,
 				4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */,
 				4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */,
+				4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */,
 				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
 				4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */,
 				4E44A6061DDA60EB0085EF07 /* Info.plist */,
@@ -268,6 +271,7 @@
 				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
 				4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */,
 				4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */,
+				4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
