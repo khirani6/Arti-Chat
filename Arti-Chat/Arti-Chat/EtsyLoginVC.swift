@@ -12,6 +12,11 @@ class EtsyLoginVC: UIViewController {
 
     @IBOutlet weak var etsyWebView: UIWebView!
     
+    //Constants
+    let etsyKey = "jq4x92ncxfk5tawous7dcaxm"
+    let etsySecret = "5ywk81qg7d"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
