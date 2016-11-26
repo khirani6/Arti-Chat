@@ -9,6 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="hE1-gY-wwt">
+            <objects>
+                <viewController id="rXQ-CT-SIO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xRP-WU-VKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="bkE-VW-Dxh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Dc-Xx-9zI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="W9y-L8-LxU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zij-kJ-xez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="543" y="-1020"/>
+        </scene>
         <!--Chats-->
         <scene sceneID="qO5-Bi-QZv">
             <objects>
@@ -28,6 +47,25 @@
             </objects>
             <point key="canvasLocation" x="743.20000000000005" y="-138.0809595202399"/>
         </scene>
+        <!--Announcements-->
+        <scene sceneID="s6h-Z1-w1f">
+            <objects>
+                <viewController id="4S0-ws-CRc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xmt-gi-cOn"/>
+                        <viewControllerLayoutGuide type="bottom" id="ERG-5Y-srB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WkX-gV-1nz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Announcements" image="announcements" id="2Av-Xy-Zhm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IgF-gT-wVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478" y="656"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QMG-X1-18l">
             <objects>
@@ -39,6 +77,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="0Yk-xO-itA" kind="relationship" relationship="viewControllers" id="mAZ-xd-rYm"/>
+                        <segue destination="4S0-ws-CRc" kind="relationship" relationship="viewControllers" id="23J-ga-zOF"/>
+                        <segue destination="rXQ-CT-SIO" kind="relationship" relationship="viewControllers" id="vcP-XB-qaq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jh-ZU-mGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,7 +87,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="announcements" width="32" height="19"/>
         <image name="chats" width="32" height="29"/>
+        <image name="settings" width="36" height="37"/>
     </resources>
     <color key="tintColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
