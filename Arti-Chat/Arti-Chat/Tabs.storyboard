@@ -89,7 +89,7 @@
     <resources>
         <image name="announcements" width="32" height="19"/>
         <image name="chats" width="32" height="29"/>
-        <image name="settings" width="36" height="37"/>
+        <image name="settings" width="27" height="27"/>
     </resources>
     <color key="tintColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
