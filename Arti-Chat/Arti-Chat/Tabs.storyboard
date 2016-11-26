@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ln-Ad-Ie7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OvL-kP-es1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,45 +10,44 @@
     </dependencies>
     <scenes>
         <!--Chats-->
-        <scene sceneID="vvb-NH-5HW">
+        <scene sceneID="qO5-Bi-QZv">
             <objects>
-                <viewController id="zCZ-lx-FUw" sceneMemberID="viewController">
+                <viewController id="0Yk-xO-itA" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rik-2T-tBg"/>
-                        <viewControllerLayoutGuide type="bottom" id="STn-eC-jNz"/>
+                        <viewControllerLayoutGuide type="top" id="sJR-XH-Tgw"/>
+                        <viewControllerLayoutGuide type="bottom" id="mXA-8g-zlZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qgp-xB-aNi">
+                    <view key="view" contentMode="scaleToFill" id="oIM-bk-bBy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" image="chats" selectedImage="chats" id="KbU-Fm-CoL"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="chats" id="1lN-HX-BL5"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O19-9x-qi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miZ-b1-Zcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509.60000000000002" y="-183.05847076461771"/>
+            <point key="canvasLocation" x="743.20000000000005" y="-138.0809595202399"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="Grn-ss-SXI">
+        <scene sceneID="QMG-X1-18l">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0ln-Ad-Ie7" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OvL-kP-es1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="JFh-kf-D4S">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="LbM-ac-es4">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zCZ-lx-FUw" kind="relationship" relationship="viewControllers" id="ToQ-dC-Cog"/>
+                        <segue destination="0Yk-xO-itA" kind="relationship" relationship="viewControllers" id="mAZ-xd-rYm"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ibe-9i-P4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jh-ZU-mGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-429.60000000000002" y="-183.05847076461771"/>
+            <point key="canvasLocation" x="-196" y="-138.0809595202399"/>
         </scene>
     </scenes>
     <resources>
-        <image name="chats" width="64" height="59"/>
+        <image name="chats" width="32" height="29"/>
     </resources>
     <color key="tintColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
