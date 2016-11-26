@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,21 +81,121 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QA5-yS-6Wi">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QA5-yS-6Wi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Announcements" id="TbT-O5-yNV"/>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your text" translatesAutoresizingMaskIntoConstraints="NO" id="ZTl-FW-41Y">
+                                <rect key="frame" x="16" y="94" width="343" height="178"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to announce?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-gr-qtk">
+                                <rect key="frame" x="16" y="65" width="314" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BdC-uc-NY0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                <color key="textColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izd-Dg-pd0">
+                                <rect key="frame" x="14" y="277" width="72" height="66"/>
+                                <state key="normal" title="Button" image="unselectEmail"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vec-AR-qYn">
+                                <rect key="frame" x="92" y="300" width="78" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="o0d-tX-5Og"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="23"/>
+                                <color key="textColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM0-i3-ZK9">
+                                <rect key="frame" x="16" y="358" width="68" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="YCg-G6-tA0"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="unselectFacebook"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGh-h3-TmK">
+                                <rect key="frame" x="94" y="375" width="97" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="uV1-E8-z1P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="23"/>
+                                <color key="textColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD7-Py-D4j">
+                                <rect key="frame" x="14" y="438" width="72" height="65"/>
+                                <state key="normal" title="Button" image="unselectTwitter"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-lO-gdf">
+                                <rect key="frame" x="94" y="457" width="75" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="CrM-go-K3B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="23"/>
+                                <color key="textColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjN-nU-H1J">
+                                <rect key="frame" x="150" y="541" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="22"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QA5-yS-6Wi" firstAttribute="leading" secondItem="WkX-gV-1nz" secondAttribute="leading" id="44t-CP-IWJ"/>
+                            <constraint firstItem="GMM-lO-gdf" firstAttribute="top" secondItem="fGh-h3-TmK" secondAttribute="bottom" constant="55" id="4HY-hA-Cp1"/>
+                            <constraint firstItem="S4k-gr-qtk" firstAttribute="leading" secondItem="ZTl-FW-41Y" secondAttribute="leading" id="4lb-jg-n88"/>
+                            <constraint firstItem="fGh-h3-TmK" firstAttribute="leading" secondItem="GMM-lO-gdf" secondAttribute="leading" id="4wD-H3-1lj"/>
+                            <constraint firstItem="ERG-5Y-srB" firstAttribute="top" secondItem="SD7-Py-D4j" secondAttribute="bottom" constant="115" id="5gr-Dt-rlZ"/>
+                            <constraint firstItem="S4k-gr-qtk" firstAttribute="leading" secondItem="WkX-gV-1nz" secondAttribute="leadingMargin" id="7mf-Gk-CiD"/>
+                            <constraint firstItem="izd-Dg-pd0" firstAttribute="leading" secondItem="SD7-Py-D4j" secondAttribute="leading" id="8Hx-sz-8Kx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S4k-gr-qtk" secondAttribute="trailing" constant="29" id="9Ig-QL-ufn"/>
+                            <constraint firstItem="GMM-lO-gdf" firstAttribute="leading" secondItem="SD7-Py-D4j" secondAttribute="trailing" constant="8" symbolic="YES" id="DHk-Dy-Adk"/>
+                            <constraint firstItem="S4k-gr-qtk" firstAttribute="top" secondItem="QA5-yS-6Wi" secondAttribute="bottom" constant="21" id="GTH-Ha-Bws"/>
+                            <constraint firstItem="izd-Dg-pd0" firstAttribute="centerX" secondItem="iM0-i3-ZK9" secondAttribute="centerX" id="Gtu-RD-SUX"/>
+                            <constraint firstItem="iM0-i3-ZK9" firstAttribute="top" secondItem="izd-Dg-pd0" secondAttribute="bottom" constant="15" id="H2x-yk-1G8"/>
+                            <constraint firstItem="SD7-Py-D4j" firstAttribute="centerY" secondItem="GMM-lO-gdf" secondAttribute="centerY" id="HuD-1d-xgn"/>
+                            <constraint firstItem="izd-Dg-pd0" firstAttribute="centerY" secondItem="vec-AR-qYn" secondAttribute="centerY" id="JQw-qE-N22"/>
+                            <constraint firstItem="vec-AR-qYn" firstAttribute="leading" secondItem="izd-Dg-pd0" secondAttribute="trailing" constant="6" id="KMj-24-1qj"/>
+                            <constraint firstItem="QA5-yS-6Wi" firstAttribute="centerX" secondItem="ZTl-FW-41Y" secondAttribute="centerX" id="MsY-3b-oik"/>
+                            <constraint firstItem="fGh-h3-TmK" firstAttribute="leading" secondItem="iM0-i3-ZK9" secondAttribute="trailing" constant="10" id="O7G-sK-NHP"/>
+                            <constraint firstItem="ZTl-FW-41Y" firstAttribute="leading" secondItem="iM0-i3-ZK9" secondAttribute="leading" id="UxE-cb-wkR"/>
+                            <constraint firstItem="ZTl-FW-41Y" firstAttribute="top" secondItem="S4k-gr-qtk" secondAttribute="bottom" constant="8" symbolic="YES" id="aF1-Dn-9Ab"/>
+                            <constraint firstItem="iM0-i3-ZK9" firstAttribute="centerY" secondItem="fGh-h3-TmK" secondAttribute="centerY" id="aPF-dW-ZiI"/>
+                            <constraint firstItem="vec-AR-qYn" firstAttribute="centerX" secondItem="GMM-lO-gdf" secondAttribute="centerX" id="aPR-HW-TTx"/>
+                            <constraint firstItem="QA5-yS-6Wi" firstAttribute="top" secondItem="WkX-gV-1nz" secondAttribute="top" id="cAd-YD-MSg"/>
+                            <constraint firstItem="SD7-Py-D4j" firstAttribute="top" secondItem="iM0-i3-ZK9" secondAttribute="bottom" constant="20" id="gG2-7b-36w"/>
+                            <constraint firstAttribute="trailing" secondItem="QA5-yS-6Wi" secondAttribute="trailing" id="nPg-j4-GIX"/>
+                            <constraint firstItem="izd-Dg-pd0" firstAttribute="trailing" secondItem="SD7-Py-D4j" secondAttribute="trailing" id="o0K-gE-TWa"/>
+                            <constraint firstItem="fGh-h3-TmK" firstAttribute="top" secondItem="vec-AR-qYn" secondAttribute="bottom" constant="54" id="of2-XU-Z8U"/>
+                            <constraint firstItem="izd-Dg-pd0" firstAttribute="top" secondItem="ZTl-FW-41Y" secondAttribute="bottom" constant="5" id="uuy-GC-8PR"/>
+                            <constraint firstItem="vec-AR-qYn" firstAttribute="top" secondItem="ZTl-FW-41Y" secondAttribute="bottom" constant="28" id="xaW-SU-hBc"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Announcements" image="announcements" id="2Av-Xy-Zhm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgF-gT-wVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="478" y="656"/>
+            <point key="canvasLocation" x="477.60000000000002" y="655.32233883058473"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QMG-X1-18l">
@@ -120,6 +221,9 @@
         <image name="announcements" width="28" height="28"/>
         <image name="chats" width="28" height="28"/>
         <image name="settings" width="27" height="27"/>
+        <image name="unselectEmail" width="120" height="112"/>
+        <image name="unselectFacebook" width="108" height="102"/>
+        <image name="unselectTwitter" width="112" height="104"/>
     </resources>
     <color key="tintColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
