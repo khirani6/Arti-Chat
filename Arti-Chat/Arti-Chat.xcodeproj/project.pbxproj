@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */; };
+		4E0D0A521DE8CDBC00092F90 /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */; };
+		4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */; };
 		4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */; };
 		4E44A5FD1DDA60EB0085EF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */; };
 		4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A5FE1DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtsyLoginVC.swift; sourceTree = "<group>"; };
+		4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
+		4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformSignUpVC.swift; sourceTree = "<group>"; };
 		4E44A5F41DDA60EB0085EF07 /* Arti-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arti-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E44A5FC1DDA60EB0085EF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				4E44A6281DDA648A0085EF07 /* SignUpVC.swift */,
 				4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */,
 				4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */,
+				4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */,
+				4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */,
 				4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */,
 				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
 				4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */,
@@ -241,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E0D0A521DE8CDBC00092F90 /* Tabs.storyboard in Resources */,
 				4E44A6051DDA60EB0085EF07 /* LaunchScreen.storyboard in Resources */,
 				4E44A6021DDA60EB0085EF07 /* Assets.xcassets in Resources */,
 				4E44A5FD1DDA60EB0085EF07 /* Main.storyboard in Resources */,
@@ -269,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
+				4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */,
 				4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */,
 				4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */,
 				4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */,
@@ -424,6 +432,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Arti-Chat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-Chat";
@@ -437,6 +449,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5HCB9SF4EZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Arti-Chat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "teamrick.Arti-Chat";

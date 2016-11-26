@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class EtsyLoginVC: UIViewController {
 
@@ -15,6 +16,7 @@ class EtsyLoginVC: UIViewController {
     //Constants
     let etsyKey = "jq4x92ncxfk5tawous7dcaxm"
     let etsySecret = "5ywk81qg7d"
+    
     
     
     override func viewDidLoad() {
