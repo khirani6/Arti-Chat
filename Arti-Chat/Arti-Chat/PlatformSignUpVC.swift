@@ -32,6 +32,8 @@ class PlatformSignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isEmailClicked = false
+        isFacebookClicked = false
+        isTwitterClicked = false
         // Do any additional setup after loading the view.
     }
 

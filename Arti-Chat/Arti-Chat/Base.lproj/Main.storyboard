@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="1561.875" y="135.21126760563379"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Tabs-->
         <scene sceneID="0eY-oP-tKH">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Tabs" id="5Sp-H8-Eiv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Tabs" storyboardName="Tabs" id="5Sp-H8-Eiv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o79-iu-g98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2251" y="136"/>
