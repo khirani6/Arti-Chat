@@ -18,6 +18,7 @@
 		4E44A6101DDA60EB0085EF07 /* Arti_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A60F1DDA60EB0085EF07 /* Arti_ChatTests.swift */; };
 		4E44A61B1DDA60EB0085EF07 /* Arti_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A61A1DDA60EB0085EF07 /* Arti_ChatUITests.swift */; };
 		4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A6281DDA648A0085EF07 /* SignUpVC.swift */; };
+		4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4E44A61A1DDA60EB0085EF07 /* Arti_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arti_ChatUITests.swift; sourceTree = "<group>"; };
 		4E44A61C1DDA60EB0085EF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E44A6281DDA648A0085EF07 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */,
 				4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */,
 				4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */,
+				4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */,
 				4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */,
 				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
 				4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */,
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
+				4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */,
 				4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */,
 				4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */,
 				4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */,
