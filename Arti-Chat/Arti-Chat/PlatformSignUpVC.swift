@@ -28,6 +28,9 @@ class PlatformSignUpVC: UIViewController {
     var isFacebookClicked:Bool!
     var isTwitterClicked:Bool!
     
+    //Other constants
+    var numServicesClicked = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +54,10 @@ class PlatformSignUpVC: UIViewController {
         
         if isEmailClicked  == true {
             emailButton.setImage(selectEmail, for: .normal)
+            numServicesClicked += 1
         } else {
             emailButton.setImage(unselectEmail, for: .normal)
+            numServicesClicked -= 1
         }
     }
     
@@ -65,8 +70,10 @@ class PlatformSignUpVC: UIViewController {
         
         if isFacebookClicked  == true {
             facebookButton.setImage(selectFacebook, for: .normal)
+            numServicesClicked += 1
         } else {
             facebookButton.setImage(unselectFacebook, for: .normal)
+            numServicesClicked -= 1
         }
     }
     
@@ -79,10 +86,13 @@ class PlatformSignUpVC: UIViewController {
         
         if isTwitterClicked  == true {
             twitterButton.setImage(selectTwitter, for: .normal)
+            numServicesClicked += 1
         } else {
             twitterButton.setImage(unselectTwitter, for: .normal)
+            numServicesClicked -= 1
         }
     }
+    
     
 
     /*
