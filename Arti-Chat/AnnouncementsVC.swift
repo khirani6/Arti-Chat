@@ -1,0 +1,124 @@
+//
+//  AnnouncementsVC.swift
+//  Arti-Chat
+//
+//  Created by Komal Hirani on 11/27/16.
+//  Copyright © 2016 Team Rick. All rights reserved.
+//
+
+import UIKit
+
+class AnnouncementsVC: UIViewController {
+    
+    @IBOutlet weak var textView: UITextView!
+    
+    //Buttons
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var twitterButton: UIButton!
+    
+    //Images
+    var selectEmail = UIImage(named: "selectEmail")
+    var unselectEmail = UIImage(named: "unselectEmail")
+    var selectFacebook = UIImage(named: "selectFacebook")
+    var unselectFacebook = UIImage(named: "unselectFacebook")
+    var selectTwitter = UIImage(named: "selectTwitter")
+    var unselectTwitter = UIImage(named: "unselectTwitter")
+    
+    //Bools
+    var isEmailClicked:Bool!
+    var isFacebookClicked:Bool!
+    var isTwitterClicked:Bool!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        isEmailClicked = false
+        isFacebookClicked = false
+        isTwitterClicked = false
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func emailPressed(_ sender: UIButton) {
+        if isEmailClicked == true {
+            isEmailClicked = false
+        } else {
+            isEmailClicked = true
+        }
+        
+        if isEmailClicked  == true {
+            emailButton.setImage(selectEmail, for: .normal)
+            //numServicesClicked += 1
+        } else {
+            emailButton.setImage(unselectEmail, for: .normal)
+            //numServicesClicked -= 1
+        }
+
+    }
+    
+    @IBAction func facebookPressed(_ sender: Any) {
+        if isFacebookClicked == true {
+            isFacebookClicked = false
+        } else {
+            isFacebookClicked = true
+        }
+        
+        if isFacebookClicked  == true {
+            facebookButton.setImage(selectFacebook, for: .normal)
+            //numServicesClicked += 1
+        } else {
+            facebookButton.setImage(unselectFacebook, for: .normal)
+            //numServicesClicked -= 1
+        }
+
+    }
+    
+    @IBAction func twitterPressed(_ sender: Any) {
+        if isTwitterClicked == true {
+            isTwitterClicked = false
+        } else {
+            isTwitterClicked = true
+        }
+        
+        if isTwitterClicked  == true {
+            twitterButton.setImage(selectTwitter, for: .normal)
+            //numServicesClicked += 1
+        } else {
+            twitterButton.setImage(unselectTwitter, for: .normal)
+            //numServicesClicked -= 1
+        }
+    }
+    
+    
+    
+    
+    @IBAction func sendPressed(_ sender: UIButton) {
+        if textView.text != nil {
+            let alert = UIAlertController(title: "Message Sent", message: "Message has been sent", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            textView.text = nil
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "Please type in a message", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

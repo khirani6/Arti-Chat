@@ -54,7 +54,7 @@
         <!--Announcements-->
         <scene sceneID="s6h-Z1-w1f">
             <objects>
-                <viewController id="4S0-ws-CRc" sceneMemberID="viewController">
+                <viewController id="4S0-ws-CRc" customClass="AnnouncementsVC" customModule="Arti_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xmt-gi-cOn"/>
                         <viewControllerLayoutGuide type="bottom" id="ERG-5Y-srB"/>
@@ -66,6 +66,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izd-Dg-pd0">
                                 <rect key="frame" x="12" y="207" width="76" height="71"/>
                                 <state key="normal" title="Button" image="unselectEmail"/>
+                                <connections>
+                                    <action selector="emailPressed:" destination="4S0-ws-CRc" eventType="touchUpInside" id="Yh4-KM-B4z"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vec-AR-qYn">
                                 <rect key="frame" x="98" y="232" width="79" height="21"/>
@@ -105,6 +108,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendPressed:" destination="4S0-ws-CRc" eventType="touchUpInside" id="Y7u-fB-Tbb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to announce?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glp-Z6-Pjt">
                                 <rect key="frame" x="15" y="72" width="290" height="22"/>
@@ -118,6 +124,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD7-Py-D4j">
                                 <rect key="frame" x="16" y="363" width="68" height="63"/>
                                 <state key="normal" title="Button" image="unselectTwitter"/>
+                                <connections>
+                                    <action selector="twitterPressed:" destination="4S0-ws-CRc" eventType="touchUpInside" id="vGA-WU-tnL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3e-da-Yen">
                                 <rect key="frame" x="16" y="286" width="68" height="60"/>
@@ -126,6 +135,9 @@
                                     <constraint firstAttribute="width" constant="68" id="el0-CC-tDi"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="unselectFacebook"/>
+                                <connections>
+                                    <action selector="facebookPressed:" destination="4S0-ws-CRc" eventType="touchUpInside" id="qI1-07-j3n"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uMS-zE-6WY">
                                 <rect key="frame" x="17" y="102" width="287" height="97"/>
@@ -175,6 +187,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Announcements" id="LYL-Y3-2dT"/>
+                    <connections>
+                        <outlet property="emailButton" destination="izd-Dg-pd0" id="sr8-vv-UAG"/>
+                        <outlet property="facebookButton" destination="W3e-da-Yen" id="k6k-Ue-TCV"/>
+                        <outlet property="textView" destination="uMS-zE-6WY" id="Abj-xv-5hm"/>
+                        <outlet property="twitterButton" destination="SD7-Py-D4j" id="F03-22-a5V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgF-gT-wVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

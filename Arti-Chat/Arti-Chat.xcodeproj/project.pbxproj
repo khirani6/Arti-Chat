@@ -20,6 +20,7 @@
 		4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44A6281DDA648A0085EF07 /* SignUpVC.swift */; };
 		4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */; };
 		4E9263D31DEB7B3400396883 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */; };
+		4E9263D51DEB8DC300396883 /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D41DEB8DC300396883 /* AnnouncementsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		4E44A6281DDA648A0085EF07 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableVC.swift; sourceTree = "<group>"; };
 		4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
+		4E9263D41DEB8DC300396883 /* AnnouncementsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnouncementsVC.swift; path = ../AnnouncementsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4E44A6281DDA648A0085EF07 /* SignUpVC.swift */,
+				4E9263D41DEB8DC300396883 /* AnnouncementsVC.swift */,
 				4E44A5F71DDA60EB0085EF07 /* AppDelegate.swift */,
 				4E44A5FB1DDA60EB0085EF07 /* Main.storyboard */,
 				4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */,
@@ -288,6 +291,7 @@
 				4E9263D31DEB7B3400396883 /* SettingsTableVC.swift in Sources */,
 				4E44A6001DDA60EB0085EF07 /* Arti_Chat.xcdatamodeld in Sources */,
 				4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */,
+				4E9263D51DEB8DC300396883 /* AnnouncementsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
