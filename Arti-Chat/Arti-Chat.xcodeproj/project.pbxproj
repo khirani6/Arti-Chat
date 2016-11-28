@@ -21,6 +21,7 @@
 		4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */; };
 		4E9263D31DEB7B3400396883 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */; };
 		4E9263D51DEB8DC300396883 /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D41DEB8DC300396883 /* AnnouncementsVC.swift */; };
+		4E9263D71DEBA04F00396883 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9263D61DEBA04F00396883 /* SettingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableVC.swift; sourceTree = "<group>"; };
 		4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
 		4E9263D41DEB8DC300396883 /* AnnouncementsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnouncementsVC.swift; path = ../AnnouncementsVC.swift; sourceTree = "<group>"; };
+		4E9263D61DEBA04F00396883 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */,
 				4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */,
 				4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */,
+				4E9263D61DEBA04F00396883 /* SettingVC.swift */,
 				4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */,
 				4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */,
 				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
+				4E9263D71DEBA04F00396883 /* SettingVC.swift in Sources */,
 				4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */,
 				4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */,
 				4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */,

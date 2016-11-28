@@ -133,7 +133,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.119062587" green="0.46693003560000002" blue="0.69106916240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
