@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4200CB831DEBE4EF008AC002 /* ChatDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200CB821DEBE4EF008AC002 /* ChatDetailVC.swift */; };
 		4E0D0A091DE34CCC00092F90 /* EtsyLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */; };
 		4E0D0A521DE8CDBC00092F90 /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */; };
 		4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4200CB821DEBE4EF008AC002 /* ChatDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailVC.swift; sourceTree = "<group>"; };
 		4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtsyLoginVC.swift; sourceTree = "<group>"; };
 		4E0D0A511DE8CDBC00092F90 /* Tabs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		4E0D0A531DE8D13700092F90 /* PlatformSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformSignUpVC.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				4E9263D21DEB7B3400396883 /* SettingsTableVC.swift */,
 				4E9263D61DEBA04F00396883 /* SettingVC.swift */,
 				4E9263D01DEB0CA500396883 /* ChatListTableVC.swift */,
+				4200CB821DEBE4EF008AC002 /* ChatDetailVC.swift */,
 				4E0D0A081DE34CCC00092F90 /* EtsyLoginVC.swift */,
 				4E44A6011DDA60EB0085EF07 /* Assets.xcassets */,
 				4E44A6031DDA60EB0085EF07 /* LaunchScreen.storyboard */,
@@ -289,6 +292,7 @@
 			files = (
 				4E44A5F81DDA60EB0085EF07 /* AppDelegate.swift in Sources */,
 				4E9263D71DEBA04F00396883 /* SettingVC.swift in Sources */,
+				4200CB831DEBE4EF008AC002 /* ChatDetailVC.swift in Sources */,
 				4E9263D11DEB0CA500396883 /* ChatListTableVC.swift in Sources */,
 				4E0D0A541DE8D13700092F90 /* PlatformSignUpVC.swift in Sources */,
 				4E44A6291DDA648A0085EF07 /* SignUpVC.swift in Sources */,

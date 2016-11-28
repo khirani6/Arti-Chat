@@ -10,7 +10,7 @@ import UIKit
 
 class ChatListTableVC: UITableViewController {
     
-    var names = ["Komal", "Juliet", "Omojokun"]
+    var names = ["Komal Hirani", "Juliet K. Benjamin", "Olufisayo Omojokun"]
     
     
 
