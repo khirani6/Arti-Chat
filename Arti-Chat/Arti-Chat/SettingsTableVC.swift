@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Foundation
 
 class SettingsTableVC: UITableViewController {
     
     var serviceNames = ["Etsy Account","Email", "Facebook", "Twitter"]
     var serviceImageNames = ["selectEtsy","selectEmail", "selectFacebook", "selectTwitter"]
+    var settingsNames = ["Etsy", "Email", "Facebook", "Twitter"]
+    var settingsImageNames = ["etsySettings", "emailSettings", "facebookSettings", "twitterSettings"]
+    
+    var nameToPass : String!
+    var imageToPass : String!
+    
+    let userDef = UserDefaults.standard
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +60,31 @@ class SettingsTableVC: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*let settingViewController = self.storyboard?.instantiateViewController(withIdentifier: "settingVC") as! SettingVC
+        self.present(settingViewController, animated: true, completion: nil)
+        settingViewController.navigationItem.title = settingsNames[indexPath.row]
+        let name = settingsImageNames[indexPath.row]
+        settingViewController.imageView?.image = UIImage(named: name)*/
+        nameToPass = settingsNames[indexPath.row]
+        imageToPass = settingsImageNames[indexPath.row]
+        userDef.set(nameToPass, forKey: "nameToPass")
+        userDef.set(imageToPass, forKey: "imageToPass")
+        //performSegue(withIdentifier: "settingSegue", sender: self)
+        
+        
+    }
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "settingSegue") {
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destination as! SettingVC
+            // your new view controller should have property that will store passed value
+            viewController.navigationItem.title = nameToPass
+            viewController.imageView?.image = UIImage(named: "imageToPass")
+        }
+    }*/
 
     /*
     // Override to support conditional editing of the table view.
