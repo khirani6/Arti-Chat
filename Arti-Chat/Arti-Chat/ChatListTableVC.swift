@@ -11,6 +11,7 @@ import UIKit
 class ChatListTableVC: UITableViewController {
     
     var names = ["Komal Hirani", "Juliet K. Benjamin", "Olufisayo Omojokun"]
+    var firstNames = ["Komal", "Juliet", "Omojokun"]
     
     
 
@@ -46,9 +47,9 @@ class ChatListTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
 
         // Configure the cell...
-        let cellName = names[indexPath.row]
+        let cellName = firstNames[indexPath.row]
         cell.textLabel?.text = names[indexPath.row]
-        cell.detailTextLabel?.text = "Where's my package?"
+        cell.detailTextLabel?.text = "How can I get info for my tracking order?"
         cell.imageView?.image = UIImage(named: cellName)
         
 
