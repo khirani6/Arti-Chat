@@ -1,5 +1,5 @@
 # Arti-Chat
 
-Platform where sellers and businesses can handle all communications with their consumers.
+Platform where Etsy sellers can manage communication with their customers.
 
-The Arti-Chat folder contains code from our final presentation/demo from Fall 2016. It is written in Swift. Since then, we have changed focus to Android for Spring 2017. You can see our current project in Android/Arti-Chat.
+The Arti-Chat_iOS folder contains code from our final presentation/demo from Fall 2016. It is written in Swift. Since then, we have changed focus to building a web app for Spring 2017.
