@@ -20,21 +20,8 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post %r>' % self.title
 
-
-class Login(db.Model):
-    username = db.Column(db.String(80), primary_key=True, nullable=False)
-    password = db.Column(db.String(80), nullable=False)
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-
 # models for which we want to create API endpoints
-app.config['API_MODELS'] = {'post': Post, 'login': Login}
+app.config['API_MODELS'] = {'post': Post}
 
 # models for which we want to create CRUD-style URL endpoints,
 # and pass the routing onto our AngularJS application

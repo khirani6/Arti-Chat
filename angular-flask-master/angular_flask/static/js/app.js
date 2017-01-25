@@ -25,6 +25,10 @@ angular.module('AngularFlask', ['angularFlaskServices'])
 			templateUrl: 'static/partials/post-list.html',
 			controller: PostListController
 		})
+		.when('/login', {
+			templateUrl: 'static/partials/login.html',
+			controller: LoginController
+		})
 		.otherwise({
 			redirectTo: '/'
 		})
