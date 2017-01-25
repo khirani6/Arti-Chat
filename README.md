@@ -20,3 +20,9 @@ Visit:
 ```
 http://localhost:5000/
 ```
+
+Etsy Authentication:
+```
+Key: "jq4x92ncxfk5tawous7dcaxm"
+Secret: "5ywk81qg7d"
+```
