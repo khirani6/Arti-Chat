@@ -3,11 +3,11 @@
 /* Controllers */
 
 function IndexController($scope) {
-	
+
 }
 
 function AboutController($scope) {
-	
+
 }
 
 function PostListController($scope, Post) {
@@ -20,4 +20,8 @@ function PostDetailController($scope, $routeParams, Post) {
 	var postQuery = Post.get({ postId: $routeParams.postId }, function(post) {
 		$scope.post = post;
 	});
+}
+
+function LoginController($scope) {
+
 }
