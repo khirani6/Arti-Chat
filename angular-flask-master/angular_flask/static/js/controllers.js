@@ -23,5 +23,4 @@ function PostDetailController($scope, $routeParams, Post) {
 }
 
 function LoginController($scope) {
-
 }
