@@ -38,9 +38,10 @@ def login2():
 
 
 @app.route('/oauth-authorized')
-def oauth_authorized():
+@etsy.authorized_handler
+def oauth_authorized(resp):
     next_url = request.args.get('next') or url_for('basic_pages')
-    resp = etsy.authorized_response()
+    # resp = etsy.authorized_response()
     if resp is None:
         flash(u'You denied the request to sign in.')
         return redirect(next_url)
@@ -49,8 +50,11 @@ def oauth_authorized():
         resp['oauth_token'],
         resp['oauth_token_secret']
     )
-    # session['etsy_user'] = resp['screen_name']
 
+    print (resp)
+    # session['etsy_user'] = resp['screen_name']
+    user_resp = etsy.get('https://openapi.etsy.com/v2/users/artisanhub195?api_key=fvfa290fd1oj7mz3q9sz8de3')
+    print (user_resp.data)
     # flash('You were signed in as %s' % resp['screen_name'])
     return redirect(next_url)
 
