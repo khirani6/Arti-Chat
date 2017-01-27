@@ -11,10 +11,9 @@ etsy = oauth.remote_app('etsy',
     base_url='https://openapi.etsy.com/v2',
     request_token_url='https://openapi.etsy.com/v2/oauth/request_token',
     access_token_url='https://openapi.etsy.com/v2/oauth/access_token',
-    # Need to fix authorize_url
-    authorize_url='https://openapi.etsy.com/v2/oauth/authenticate',
-    consumer_key='jq4x92ncxfk5tawous7dcaxm',
-    consumer_secret='5ywk81qg7d'
+    authorize_url='https://etsy.com/oauth/signin',
+    consumer_key='fvfa290fd1oj7mz3q9sz8de3',
+    consumer_secret='mrxd5mxylm'
 )
 
 api_manager = APIManager(app, flask_sqlalchemy_db=db)

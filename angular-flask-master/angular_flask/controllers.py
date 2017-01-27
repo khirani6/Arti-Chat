@@ -49,9 +49,9 @@ def oauth_authorized():
         resp['oauth_token'],
         resp['oauth_token_secret']
     )
-    session['etsy_user'] = resp['screen_name']
+    # session['etsy_user'] = resp['screen_name']
 
-    flash('You were signed in as %s' % resp['screen_name'])
+    # flash('You were signed in as %s' % resp['screen_name'])
     return redirect(next_url)
 
 
