@@ -16,6 +16,8 @@ for model_name in app.config['API_MODELS']:
 
 api_session = api_manager.session
 
+from flask_cors import CORS, cross_origin
+CORS(app)
 
 # routing for basic pages (pass routing onto the Angular app)
 @app.route('/')
@@ -32,6 +34,7 @@ def get_etsy_token(token=None):
 
 
 @app.route('/login2')
+@cross_origin(allow_headers=['Content-Type'])
 def login2():
     return etsy.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
@@ -39,6 +42,7 @@ def login2():
 
 @app.route('/oauth-authorized')
 @etsy.authorized_handler
+@cross_origin(allow_headers=['Content-Type'])
 def oauth_authorized(resp):
     next_url = request.args.get('next') or url_for('basic_pages')
     # resp = etsy.authorized_response()

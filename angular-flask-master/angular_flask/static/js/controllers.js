@@ -22,5 +22,14 @@ function PostDetailController($scope, $routeParams, Post) {
 	});
 }
 
-function LoginController($scope) {
+function LoginController($scope, $http) {
+    $scope.login = function() {
+        console.log("check");
+        var send = $http({
+                method  : "GET",
+                url     : " /login2"
+            });
+            send.success(
+            );
+    }
 }

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('AngularFlask', ['angularFlaskServices'])
-	.config(['$routeProvider', '$locationProvider',
-		function($routeProvider, $locationProvider) {
+	.config(['$routeProvider', '$locationProvider', '$httpProvider', 
+		function($routeProvider, $locationProvider, $httpProvider) {
 		$routeProvider
 		.when('/', {
 			templateUrl: 'static/partials/landing.html',
@@ -35,5 +35,6 @@ angular.module('AngularFlask', ['angularFlaskServices'])
 		;
 
 		$locationProvider.html5Mode(true);
+        $httpProvider.defaults.withCredentials = true;
 	}])
 ;
