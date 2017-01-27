@@ -24,7 +24,3 @@ function PostDetailController($scope, $routeParams, Post) {
 
 function LoginController($scope) {
 }
-
-function AnnouncementsController($scope) {
-    var loggedIn = true;
-}
