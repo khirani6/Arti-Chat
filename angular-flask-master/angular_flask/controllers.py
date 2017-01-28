@@ -21,10 +21,18 @@ api_session = api_manager.session
 @app.route('/')
 @app.route('/about')
 @app.route('/blog')
-@app.route('/login')
 def basic_pages(**kwargs):
     return make_response(open('angular_flask/templates/index.html').read())
 
+@app.route('/login')
+def login_page():
+    return render_template('index.html')
+    #return make_response(open('angular_flask/templates/index.html').read())
+
+@app.route('/home')
+def home_page():
+    return render_template('index.html', token=session['etsy_token'])
+    #return make_response(open('angular_flask/templates/index.html').read())
 
 @etsy.tokengetter
 def get_etsy_token(token=None):
@@ -36,11 +44,11 @@ def login2():
     return etsy.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
 
-
 @app.route('/oauth-authorized')
 @etsy.authorized_handler
 def oauth_authorized(resp):
-    next_url = request.args.get('next') or url_for('basic_pages')
+    next_url = url_for('home_page') # request.args.get('next') or 
+    print "next_url = ", next_url
     # resp = etsy.authorized_response()
     if resp is None:
         flash(u'You denied the request to sign in.')
@@ -57,7 +65,7 @@ def oauth_authorized(resp):
     print (user_resp.data)
     # flash('You were signed in as %s' % resp['screen_name'])
     return redirect(next_url)
-
+    #return render_template('home.html', resp=resp)
 
 # routing for CRUD-style endpoints
 # passes routing onto the angular frontend if the requested resource exists

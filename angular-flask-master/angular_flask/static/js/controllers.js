@@ -22,5 +22,11 @@ function PostDetailController($scope, $routeParams, Post) {
 	});
 }
 
-function LoginController($scope) {
+function LoginController($scope, $window) {
+	$scope.loginButtonPress = function () {
+		$window.location.href='/login2';
+	}
+}
+function HomeController($scope, $window) {
+	console.log("Hi");
 }
