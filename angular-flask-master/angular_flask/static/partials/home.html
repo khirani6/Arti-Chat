@@ -2,11 +2,26 @@
 	<div ng-show="isSet(1)">
 		<p>Tab #1</p>
 	</div>
-	<div ng-show="isSet(2)">
+	<div ng-show="isSet(2)" id="tab-announcements">
+		<div class="tab-content">
+			<p>What would you like to announce?</p>
+			<textarea></textarea>
+			<p>Where do you want to post?</p>
+			<div class="checkbox-div"><input type="checkbox"> Email</div>
+			<div class="checkbox-div"><input type="checkbox"> Facebook</div>
+			<div class="checkbox-div"><input type="checkbox"> Twitter</div>
+			<button id="post-announcement" type="button" class="btn btn-success">Post</button>
+		</div>
+
 		<p>Tab #2</p>
 	</div>
-	<div ng-show="isSet(3)">
-		{{ user_data }}
+	<div ng-show="isSet(3)" id="tab-settings">
+		<img ng-src="{{ user_data.results[0].image_url_75x75 }}" />
+		<div class="profile-info">
+			<p>{{ user_data.results[0].first_name }} {{ user_data.results[0].last_name }}</p>
+			<p>{{ user_data.results[0].login_name }}</p>
+			<p>{{ user_data.results[0].gender }}</p>
+		</div>
 	</div>
 </div>
 <div id="home-tabs">

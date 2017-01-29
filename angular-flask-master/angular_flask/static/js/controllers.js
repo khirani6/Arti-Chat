@@ -28,7 +28,7 @@ function LoginController($scope, $window) {
 	}
 }
 function HomeController($scope, $window) {
-	$scope.tab = 1;
+	$scope.tab = 3;
 
     $scope.setTab = function(newTab){
       $scope.tab = newTab;
@@ -37,6 +37,7 @@ function HomeController($scope, $window) {
     $scope.isSet = function(tabNum){
       return $scope.tab === tabNum;
     };
-    $scope.user_data = user_data_global;
+   	var user_data = user_data_global.replace(new RegExp("&#34;", 'g'), "\"");
+	$scope.user_data = JSON.parse(user_data);
 }
 
