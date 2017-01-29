@@ -28,5 +28,15 @@ function LoginController($scope, $window) {
 	}
 }
 function HomeController($scope, $window) {
-	console.log("Hi");
+	$scope.tab = 1;
+
+    $scope.setTab = function(newTab){
+      $scope.tab = newTab;
+    };
+
+    $scope.isSet = function(tabNum){
+      return $scope.tab === tabNum;
+    };
+    $scope.user_data = user_data_global;
 }
+
