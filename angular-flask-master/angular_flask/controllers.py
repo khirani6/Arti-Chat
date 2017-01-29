@@ -34,11 +34,11 @@ def login_page():
 @app.route('/home')
 def home_page():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/profile')
-    print "RESPONSE 2 status = "
+    print ("RESPONSE 2 status = ")
 
     stringified = json.dumps(resp.data)
-    print stringified
-    
+    print (stringified)
+
     return render_template('index.html', token=session['etsy_token'], user_data=stringified)
     #return make_response(open('angular_flask/templates/index.html').read())
 
@@ -55,8 +55,8 @@ def login2():
 @app.route('/oauth-authorized')
 @etsy.authorized_handler
 def oauth_authorized(resp):
-    next_url = url_for('home_page') # request.args.get('next') or 
-    print "next_url = ", next_url
+    next_url = url_for('home_page') # request.args.get('next') or
+    print ("next_url = ", next_url)
     # resp = etsy.authorized_response()
     if resp is None:
         flash(u'You denied the request to sign in.')
@@ -67,7 +67,7 @@ def oauth_authorized(resp):
         resp['oauth_token_secret']
     )
 
-    print "RESPONSE = ", resp
+    print ("RESPONSE = ", resp)
     # session['etsy_user'] = resp['screen_name']
     #user_resp = etsy.get('https://openapi.etsy.com/v2/users/artisanhub195?api_key=fvfa290fd1oj7mz3q9sz8de3')
     #print (user_resp.data)
