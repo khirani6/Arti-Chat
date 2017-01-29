@@ -36,9 +36,10 @@ def home_page():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/profile')
     print "RESPONSE 2 status = "
 
-    print json.dumps(resp.data, sort_keys=True, indent=4, separators=(',', ': '))
+    stringified = json.dumps(resp.data)
+    print stringified
     
-    return render_template('index.html', token=session['etsy_token'], user_data=resp.data)
+    return render_template('index.html', token=session['etsy_token'], user_data=stringified)
     #return make_response(open('angular_flask/templates/index.html').read())
 
 @etsy.tokengetter
