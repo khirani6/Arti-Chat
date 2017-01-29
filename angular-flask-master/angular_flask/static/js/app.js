@@ -5,8 +5,8 @@ angular.module('AngularFlask', ['angularFlaskServices'])
 		function($routeProvider, $locationProvider) {
 		$routeProvider
 		.when('/', {
-			templateUrl: 'static/partials/landing.html',
-			controller: IndexController
+			templateUrl: 'static/partials/login.html',
+			controller: LoginController
 		})
 		.when('/about', {
 			templateUrl: 'static/partials/about.html',
