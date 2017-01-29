@@ -49,6 +49,9 @@
 	list-style-type: none;
 	margin-left: 0;
 }
+#content {
+	position: relative;
+}
 
 /* Login Page rules */
 
@@ -82,4 +85,28 @@
 	color: #eb6d20;
 	font-family: serif;
 	font-size: 1.5em;
+}
+
+/** Home Page rules */
+
+#home-tabs {
+	position: absolute;
+	bottom: -15px;
+	/*border: 1px solid;*/
+	width: 40%;
+	left: 25%;
+}
+#home-tabs ul {
+	width: 100%;
+}
+#home-tabs ul li {
+	width: 33%;
+	text-align: center;
+	padding: 20px 0px;
+}
+#home-tabs ul li a {
+	padding: 20px 0px;
+}
+#home-tabs * {
+	/*border: 1px solid;*/
 }

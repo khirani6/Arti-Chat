@@ -1,5 +1,7 @@
 import os
 
+import json
+
 from flask import Flask, request, Response, session
 from flask import render_template, url_for, redirect, send_from_directory
 from flask import send_file, make_response, abort
@@ -31,7 +33,12 @@ def login_page():
 
 @app.route('/home')
 def home_page():
-    return render_template('index.html', token=session['etsy_token'])
+    resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/profile')
+    print "RESPONSE 2 status = "
+
+    print json.dumps(resp.data, sort_keys=True, indent=4, separators=(',', ': '))
+    
+    return render_template('index.html', token=session['etsy_token'], user_data=resp.data)
     #return make_response(open('angular_flask/templates/index.html').read())
 
 @etsy.tokengetter
@@ -59,10 +66,10 @@ def oauth_authorized(resp):
         resp['oauth_token_secret']
     )
 
-    print (resp)
+    print "RESPONSE = ", resp
     # session['etsy_user'] = resp['screen_name']
-    user_resp = etsy.get('https://openapi.etsy.com/v2/users/artisanhub195?api_key=fvfa290fd1oj7mz3q9sz8de3')
-    print (user_resp.data)
+    #user_resp = etsy.get('https://openapi.etsy.com/v2/users/artisanhub195?api_key=fvfa290fd1oj7mz3q9sz8de3')
+    #print (user_resp.data)
     # flash('You were signed in as %s' % resp['screen_name'])
     return redirect(next_url)
     #return render_template('home.html', resp=resp)
