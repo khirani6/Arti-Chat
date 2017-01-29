@@ -41,4 +41,7 @@ function HomeController($scope, $window) {
     };
    	var user_data = user_data_global.replace(new RegExp("&#34;", 'g'), "\"");
 	$scope.user_data = JSON.parse(user_data);
+	$scope.logout = function () {
+		$window.location.href= '/login';
+	}
 }
