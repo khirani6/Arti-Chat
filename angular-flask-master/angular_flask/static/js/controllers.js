@@ -23,7 +23,9 @@ function PostDetailController($scope, $routeParams, Post) {
 }
 
 function LoginController($scope, $window) {
+    $scope.isLoading = false;
 	$scope.loginButtonPress = function () {
+        $scope.isLoading = true;
 		$window.location.href='/login2';
 	}
 }
@@ -40,4 +42,3 @@ function HomeController($scope, $window) {
    	var user_data = user_data_global.replace(new RegExp("&#34;", 'g'), "\"");
 	$scope.user_data = JSON.parse(user_data);
 }
-
