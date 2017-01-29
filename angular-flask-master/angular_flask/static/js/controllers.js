@@ -22,10 +22,30 @@ function PostDetailController($scope, $routeParams, Post) {
 	});
 }
 
-function LoginController($scope, $window) {
+function LoginController($scope, $window, $http, loginFactory, testingFactory) {
+    $scope.isLoggedIn = false;
+    $scope.data = {};
+    $scope.isLoading = false;
+
+
+    $scope.toggleView = function(e) {
+    //    $scope.isLoggedIn = !$scope.isLoggedIn;
+        $scope.isLoading = !$scope.isLoading;
+        $http.get("https://openapi.etsy.com/v2/users/etsystore?api_key=fvfa290fd1oj7mz3q9sz8de3").then(function (response) {
+            $scope.data = response.data;
+        });
+    };
+
 	$scope.loginButtonPress = function () {
-		$window.location.href='/login2';
-	}
+        console.log("wut");
+        $scope.isLoading = true;
+        $window.location.href='/login2';
+        /*
+        var ret = loginFactory.get({}, function(data) {
+            $scope.data = data;
+        })*/
+
+	};
 }
 function HomeController($scope, $window) {
 	$scope.tab = 1;
@@ -39,4 +59,3 @@ function HomeController($scope, $window) {
     };
     $scope.user_data = user_data_global;
 }
-

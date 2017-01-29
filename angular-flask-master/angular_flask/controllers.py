@@ -37,7 +37,7 @@ def home_page():
     print "RESPONSE 2 status = "
 
     print json.dumps(resp.data, sort_keys=True, indent=4, separators=(',', ': '))
-    
+
     return render_template('index.html', token=session['etsy_token'], user_data=resp.data)
     #return make_response(open('angular_flask/templates/index.html').read())
 
@@ -54,7 +54,7 @@ def login2():
 @app.route('/oauth-authorized')
 @etsy.authorized_handler
 def oauth_authorized(resp):
-    next_url = url_for('home_page') # request.args.get('next') or 
+    next_url = url_for('home_page') # request.args.get('next') or
     print "next_url = ", next_url
     # resp = etsy.authorized_response()
     if resp is None:

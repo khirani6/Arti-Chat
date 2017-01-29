@@ -1,4 +1,32 @@
-<div id="login-content-box">
-	<div id="main-header">Artisan-Hub.</div>
-	<button id="login-with-etsy" ng-click="loginButtonPress()">Login with <span id="etsy-text">Etsy</button>
+<div>
+    <button ng-click="toggleView($event)" ></button>
+
+    <div ng-show="!isLoggedIn">
+        <div id="login-content-box">
+        	<div id="main-header">Artisan-Hub.</div>
+            <p> Artisan-Hub is an app for Etsy sellers created for seamless Etsy store transaction and communication management.</p>
+            <div>
+
+        	    <button id="login-with-etsy" ng-click="loginButtonPress()">
+                    <div ng-show="!isLoading">
+                        Login with <span id="etsy-text">Etsy</span>
+                    </div>
+
+                    <div ng-hide="!isLoading" style="width: 100%; padding-left: 40%">
+                        <div class="loader"></div>
+                    </div>
+                </button>
+
+
+            </div>
+            <div
+
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-hide="!isLoggedIn">
+
+    </div>
 </div>

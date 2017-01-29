@@ -110,3 +110,36 @@
 #home-tabs * {
 	/*border: 1px solid;*/
 }
+
+.module {
+  background: white;
+  width: 100%;
+
+}
+
+.stripe-6 {
+  color: white;
+  background-color: #f45800;
+  margin: 0;
+  height: 20px;
+}
+.stripe-5 {
+  color: white;
+  background-color: black;
+  margin: 0;
+  height: 20px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid black; /* Blue */
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
