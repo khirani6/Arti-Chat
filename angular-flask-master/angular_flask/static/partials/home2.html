@@ -1,6 +1,13 @@
 <div ng-show="isLoggedIn" id="home-tab-content">
 	<div ng-show="isSet(1)">
 		<p>Tab #1</p>
+        <table class="table table-striped" >
+            <tr ng-repeat="x in shop_listings.results">
+                <td>{{ x.title }}</td>
+                <td>{{ x.price }}</td>
+            </tr>
+        </table>
+
 	</div>
 	<div ng-show="isSet(2)" id="tab-announcements">
 		<div class="tab-content">

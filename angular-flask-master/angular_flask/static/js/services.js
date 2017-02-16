@@ -9,8 +9,20 @@ angular.module('angularFlaskServices', ['ngResource'])
 				isArray: true
 			}
 		});
-	})
-;
-
-
-
+	}).factory('Shops', function($resource) {
+		return $resource('/shops', {}, {
+			query: {
+				method: 'GET',
+				isArray: true
+			}
+		});
+	}).factory('ActiveShopListings', function($resource) {
+		return $resource('/shops/:shop_id/listings/active', {}, {
+			query: {
+				method: 'GET',
+                params: { shop_id: '@shop_id'},
+				isArray: false,
+                include_private: true
+			}
+		});
+	});
