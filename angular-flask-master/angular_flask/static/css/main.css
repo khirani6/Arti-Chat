@@ -17,6 +17,10 @@
     border: 5px solid black;
 }
 
+img {
+    border-radius: 0%;
+}
+
 .thumbnail img {
 
 padding-right:15px;
