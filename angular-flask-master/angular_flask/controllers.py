@@ -123,6 +123,18 @@ def get_shop_transactions(shop_id):
     #print (stringified)
     return stringified
 
+@app.route("/users/<user_id>/profile")
+def get_user_profile(user_id):
+    resp_url = "https://openapi.etsy.com/v2/users/" + user_id + "/profile"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
 
 
 def convert(data):
