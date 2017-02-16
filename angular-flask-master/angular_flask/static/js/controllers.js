@@ -31,8 +31,9 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, Shops, $rootScope, ActiveShopListings) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails) {
     $scope.isLoggedIn = false;
+    $scope.thumbnails = {};
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
@@ -48,20 +49,33 @@ function HomeController($scope, $window, Shops, $rootScope, ActiveShopListings) 
 
     $scope.isLoggedIn = ($scope.user_data != null) //temp way of handling this
     var shop_id = null;
-    var listings = Shops.get({}, function(data) {
-		$scope.listings = data;
-        console.log($scope.listings);
-        shop_id = $scope.listings.results[0].shop_id;
+    var shop = Shops.get({}, function(data) {
+		$scope.shop = data;
+        console.log($scope.shop);
+        shop_id = $scope.shop.results[0].shop_id;
 
-        var shop_listings = ActiveShopListings.get({ shop_id: shop_id }, function(data) {
-    		$scope.shop_listings = data;
-            console.log($scope.shop_listings);
+        var shop_listings = ActiveShopListings.get({ shop_id: shop_id }, function(listings) {
+            var i = 0;
+            console.log(listings.results);
+            for (var listing of listings.results) {
+                var listing_thumb = ListingThumbnails.get({ listing_id: listing.listing_id }, function(img) {
+                    console.log(listing.listing_id);
+                    console.log(i);
+                    $scope.thumbnails[i] = img.results;
+                    i++;
+            	});
+
+            }
+
+           $scope.shop_listings = listings;
+           console.log($scope.shop_listings);
+           console.log($scope.thumbnails);
     	});
 	});
 
-
-
-
+    $scope.get_listing_thumbnail = function(id) {
+        return ($scope.thumbnails[id]);
+    };
 
 	$scope.logout = function () {
         $rootScope.isLoggedIn = false;

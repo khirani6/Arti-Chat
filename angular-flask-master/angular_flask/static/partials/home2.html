@@ -1,12 +1,60 @@
 <div ng-show="isLoggedIn" id="home-tab-content">
 	<div ng-show="isSet(1)">
 		<p>Tab #1</p>
-        <table class="table table-striped" >
-            <tr ng-repeat="x in shop_listings.results">
-                <td>{{ x.title }}</td>
-                <td>{{ x.price }}</td>
+
+            <!--<div ng-repeat="listing in shop_listings.results" class="col-md-3">
+                <div class="webnail">
+                    <img src="{{thumbnails[$index][0].url_170x135}}" title='Welcome'/>
+                    {{ listing.title }}
+                </div>
+            </div>-->
+            <!--<div class="row">
+             <div ng-repeat="listing in shop_listings.results" class="col-sm-6 col-md-3 ">
+                 <div class = "">
+                    <img src="{{thumbnails[$index][0].url_170x135}}">
+                    <div class = "caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Some sample text. Some sample text.</p>
+
+                        <p>
+                           <a href = "#" class = "btn btn-primary" role = "button">
+                              Button
+                           </a>
+
+                           <a href = "#" class = "btn btn-default" role = "button">
+                              Button
+                           </a>
+                        </p>
+                     </div>
+                 </div>-->
+          <div class="row">
+              <div ng-repeat="listing in shop_listings.results" class="col-md-8">
+                  <div class="thumbnail clearfix">
+                      <img src="{{thumbnails[$index][0].url_170x135}}" class="pull-left">
+                      <div class="caption" class="pull-right">
+                          <h1>{{listing.title}}</h1>
+                          <h3>{{listing.price}}</h3>
+                      </div>
+                  </div>
+              </div>
+
+
+         </div>
+
+
+     </div>
+        <!--<table>
+            <tr>
+                <th>Name</th>
+                <th>Prices</th>
             </tr>
-        </table>
+            <tr ng-repeat="listing in shop_listings.results">
+                <td>{{ listing.title }}</td>
+                <td>{{ listing.price }}</td>
+            </tr>
+        </table>-->
+
+
 
 	</div>
 	<div ng-show="isSet(2)" id="tab-announcements">

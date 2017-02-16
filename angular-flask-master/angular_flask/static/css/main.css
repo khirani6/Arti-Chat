@@ -10,6 +10,43 @@
 	letter-spacing: -2px;
 	font-weight: bold;
 }
+.thumbnail-box {
+    width: 100px;
+    display: inline;
+    padding: 10px;
+    border: 5px solid black;
+}
+
+.thumbnail img {
+
+padding-right:15px;
+}
+
+.textRight {
+
+text-align : right;
+}
+
+
+/* Added some padding to make it more readable */
+
+div[class^="col-"] {
+    padding:40px;
+}
+
+.webnail {
+    float: left;
+}
+
+.webnail a {
+    height: 100px;
+    width: 100px;
+    display: block;
+    padding: 4px;
+    border: 1px solid #CBCBCB;
+    margin: 0 3px 20px 10px;
+}
+
 
 .header-section {
 	padding: 50px 0;
@@ -90,7 +127,7 @@
 /** Home Page rules */
 
 #home-tabs {
-	position: absolute;
+	position: relative;
 	bottom: -15px;
 	/*border: 1px solid;*/
 	width: 40%;

@@ -25,4 +25,12 @@ angular.module('angularFlaskServices', ['ngResource'])
                 include_private: true
 			}
 		});
+	}).factory('ListingThumbnails', function($resource) {
+		return $resource('/listings/:listing_id/images', {}, {
+			query: {
+				method: 'GET',
+                params: { listing_id: '@listing_id'},
+				isArray: true
+			}
+		});
 	});
