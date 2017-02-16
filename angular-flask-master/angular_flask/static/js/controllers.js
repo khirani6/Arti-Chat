@@ -31,10 +31,13 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory) {
     $scope.isLoggedIn = false;
+    $scope.finished_loading = false;
     $scope.thumbnails = {};
     $scope.transactions = {};
+    $scope.buyers = {};
+
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
@@ -58,27 +61,35 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         var shop_listings = ActiveShopListings.get({ shop_id: shop_id }, function(listings) {
             var i = 0;
             var j = 0;
-            console.log(listings.results);
-            for (var listing of listings.results) {
-                var listing_thumb = ListingThumbnails.get({ listing_id: listing.listing_id }, function(img) {
+            for (let listing of listings.results) {
+                var temp_id = listing.listing_id;
+                console.log(temp_id);
+                var listing_thumb = ListingThumbnails.get({ listing_id: temp_id }, function(img) {
                     console.log(listing.listing_id);
                     console.log(i);
-                    $scope.thumbnails[i] = img.results;
+                    $scope.thumbnails[listing.listing_id] = img.results;
                     i++;
             	});
 
             }
 
-
             for (var listing of listings.results) {
+                var current_listing_id = listing.listing_id;
                 var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
                     console.log(transactions);
-                    if (!$scope.transactions[j]) {
-                        $scope.transactions[j] = transactions;
+                    if (!$scope.transactions[current_listing_id]) {
                         j++;
+                        for (var transaction of transactions.results) {
+                            let user_id = transaction.buyer_user_id;
+                            var user_profile = UserProfileFactory.get({ user_id: user_id }, function(data) {
+                                $scope.buyers[user_id] = data.results;
+                                console.log($scope.buyers);
+                                $scope.finished_loading = true;
+                            });
+                        }
+                        $scope.transactions[current_listing_id] = transactions.results;
                     }
             	});
-
             }
 
            $scope.shop_listings = listings;
@@ -87,6 +98,10 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
            console.log($scope.transactions);
     	});
 	});
+
+    $scope.user_from_id = function(user_id) {
+
+    }
 
     $scope.get_listing_thumbnail = function(id) {
         return ($scope.thumbnails[id]);
