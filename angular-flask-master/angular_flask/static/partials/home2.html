@@ -34,14 +34,21 @@
                       <div class="caption" class="pull-right">
                           <h1>{{listing.title}}</h1>
                           <h3>{{listing.price}}</h3>
+
+                          <table class="table table-hover">
+                              <tr>
+                                  <th>Name</th>
+                                  <th>Prices</th>
+                              </tr>
+                              <tr ng-repeat="transaction in transactions[$index].results">
+                                  <td>{{ transaction.title }}</td>
+                                  <td>{{ transaction.buyer_user_id }}</td>
+                              </tr>
+                          </table>
                       </div>
                   </div>
               </div>
-
-
          </div>
-
-
      </div>
         <!--<table>
             <tr>

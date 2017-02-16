@@ -31,9 +31,10 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions) {
     $scope.isLoggedIn = false;
     $scope.thumbnails = {};
+    $scope.transactions = {};
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
@@ -56,6 +57,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
         var shop_listings = ActiveShopListings.get({ shop_id: shop_id }, function(listings) {
             var i = 0;
+            var j = 0;
             console.log(listings.results);
             for (var listing of listings.results) {
                 var listing_thumb = ListingThumbnails.get({ listing_id: listing.listing_id }, function(img) {
@@ -67,9 +69,22 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
             }
 
+
+            for (var listing of listings.results) {
+                var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
+                    console.log(transactions);
+                    if (!$scope.transactions[j]) {
+                        $scope.transactions[j] = transactions;
+                        j++;
+                    }
+            	});
+
+            }
+
            $scope.shop_listings = listings;
            console.log($scope.shop_listings);
            console.log($scope.thumbnails);
+           console.log($scope.transactions);
     	});
 	});
 

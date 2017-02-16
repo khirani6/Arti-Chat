@@ -33,4 +33,12 @@ angular.module('angularFlaskServices', ['ngResource'])
 				isArray: true
 			}
 		});
+	}).factory('ListingTransactions', function($resource) {
+		return $resource('/shops/:shop_id/transactions', {}, {
+			query: {
+				method: 'GET',
+                params: { shop_id: '@shop_id'},
+				isArray: true
+			}
+		});
 	});

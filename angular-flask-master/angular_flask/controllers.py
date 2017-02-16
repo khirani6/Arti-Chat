@@ -74,6 +74,17 @@ def get_thumbnails(listing_id):
     #print (stringified)
     return stringified
 
+@app.route("/listings/<listing_id>/transactions")
+def get_all_transactions_for_listing(listing_id):
+    resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/transactions"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    return stringified
+
 
 @app.route("/shops")
 def get_listings():
@@ -91,6 +102,18 @@ def get_listings():
 @app.route("/shops/<shop_id>/listings/active")
 def get_shop_active_listings(shop_id):
     resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/listings/active"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/shops/<shop_id>/transactions")
+def get_shop_transactions(shop_id):
+    resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/transactions"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
     print resp.data
