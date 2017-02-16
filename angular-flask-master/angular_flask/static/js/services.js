@@ -41,4 +41,11 @@ angular.module('angularFlaskServices', ['ngResource'])
 				isArray: true
 			}
 		});
+	}).factory('UserProfileFactory', function($resource) {
+		return $resource('/users/:user_id/profile', {}, {
+			query: {
+				method: 'GET',
+                params: { user_id: '@user_id'}
+			}
+		});
 	});
