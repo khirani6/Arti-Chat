@@ -65,11 +65,13 @@
                             <th>Buyer</th>
                             <th>Price</th>
                             <th>Quantity</th>
+                            <th>Order Date</th>
                         </tr>
                         <tr ng-repeat="transaction in transactions[listing.listing_id]">
                             <td>{{ buyers[transaction.buyer_user_id][0].login_name }}</td>
                             <td>{{ transaction.price }}</td>
                             <td>{{ transaction.quantity }}</td>
+                            <td>{{ epoch_seconds_to_local_time(transaction.creation_tsz) }}</td>
                         </tr>
                     </table>
                 </div>

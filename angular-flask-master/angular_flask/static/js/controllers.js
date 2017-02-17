@@ -34,6 +34,8 @@ function LoginController($scope, $window, $rootScope) {
 function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory) {
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
+    $scope.viewing_lightbox = false;
+
     $scope.thumbnails = {};
     $scope.transactions = {};
     $scope.buyers = {};
@@ -70,20 +72,17 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     $scope.thumbnails[listing.listing_id] = img.results;
                     i++;
             	});
-
             }
 
             for (var listing of listings.results) {
                 var current_listing_id = listing.listing_id;
                 var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
-                    console.log(transactions);
                     if (!$scope.transactions[current_listing_id]) {
                         j++;
                         for (var transaction of transactions.results) {
                             let user_id = transaction.buyer_user_id;
                             var user_profile = UserProfileFactory.get({ user_id: user_id }, function(data) {
                                 $scope.buyers[user_id] = data.results;
-                                console.log($scope.buyers);
                                 $scope.finished_loading = true;
                             });
                         }
@@ -92,16 +91,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             	});
             }
 
+            console.log($scope.transactions);
            $scope.shop_listings = listings;
-           console.log($scope.shop_listings);
-           console.log($scope.thumbnails);
-           console.log($scope.transactions);
     	});
 	});
 
     $scope.user_from_id = function(user_id) {
 
-    }
+    };
 
     $scope.get_listing_thumbnail = function(id) {
         return ($scope.thumbnails[id]);
@@ -111,5 +108,13 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         $rootScope.isLoggedIn = false;
         $scope.isLoggedIn = false;
 		$window.location.href= '/login';
-	}
+	};
+
+    $scope.epoch_seconds_to_local_time = function(str) {
+        var temp = parseInt(str);
+        var d = new Date(temp * 1000);
+
+
+        return d.toLocaleDateString() + " @ " + d.toLocaleTimeString();
+    }
 }
