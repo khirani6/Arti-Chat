@@ -43,13 +43,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
+      console.log($scope.transactions);
     };
 
     $scope.isSet = function(tabNum) {
-      return $scope.tab === tabNum;
+      return ($scope.tab === tabNum);
     };
 
-   	var user_data = user_data_global.replace(new RegExp("&#34;", 'g'), "\"");
+   	var user_data = user_data_global.replace(new RegExp("&#34;", "g"), "\"");
 	$scope.user_data = JSON.parse(user_data);
     console.log($scope.user_data)
 
@@ -74,31 +75,24 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             	});
             }
 
-            for (var listing of listings.results) {
-                var current_listing_id = listing.listing_id;
-                var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
-                    if (!$scope.transactions[current_listing_id]) {
-                        j++;
-                        for (var transaction of transactions.results) {
-                            let user_id = transaction.buyer_user_id;
-                            var user_profile = UserProfileFactory.get({ user_id: user_id }, function(data) {
-                                $scope.buyers[user_id] = data.results;
-                                $scope.finished_loading = true;
-                            });
-                        }
-                        $scope.transactions[current_listing_id] = transactions.results;
-                    }
-            	});
-            }
+            var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
+                for (var transaction of transactions.results) {
+                    $scope.transactions[transaction.listing_id] = [];
+                }
 
-            console.log($scope.transactions);
-           $scope.shop_listings = listings;
+                for (var transaction of transactions.results) {
+                    console.log(transaction);
+                    $scope.transactions[transaction.listing_id].push(transaction);
+                    let user_id = transaction.buyer_user_id;
+                    var user_profile = UserProfileFactory.get({ user_id: user_id }, function(data) {
+                        $scope.buyers[user_id] = data.results;
+                        $scope.finished_loading = true;
+                    });
+                }
+        	});
+            $scope.shop_listings = listings;
     	});
 	});
-
-    $scope.user_from_id = function(user_id) {
-
-    };
 
     $scope.get_listing_thumbnail = function(id) {
         return ($scope.thumbnails[id]);
@@ -113,8 +107,6 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.epoch_seconds_to_local_time = function(str) {
         var temp = parseInt(str);
         var d = new Date(temp * 1000);
-
-
-        return d.toLocaleDateString() + " @ " + d.toLocaleTimeString();
+        return (d.toLocaleDateString() + " @ " + d.toLocaleTimeString());
     }
 }
