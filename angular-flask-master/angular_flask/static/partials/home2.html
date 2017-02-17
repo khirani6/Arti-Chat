@@ -12,20 +12,7 @@
     		</li>
     	</ul>
     </div>
-        <!--<table>
-            <tr>
-                <th>Name</th>
-                <th>Prices</th>
-            </tr>
-            <tr ng-repeat="listing in shop_listings.results">
-                <td>{{ listing.title }}</td>
-                <td>{{ listing.price }}</td>
-            </tr>
-        </table>-->
 
-
-
-	</div>
 	<div ng-show="isSet(2)" id="tab-announcements">
 		<div class="tab-content">
 			<p>What would you like to announce?</p>
@@ -42,16 +29,16 @@
 	<div ng-show="isSet(3)" id="tab-settings">
 		<img ng-src="{{ user_data.results[0].image_url_75x75 }}" />
 		<div class="profile-info">
-			<p>{{ user_data.results[0].first_name }} {{ user_data.results[0].last_name }}</p>
-			<p>{{ user_data.results[0].login_name }}</p>
-			<p>{{ user_data.results[0].gender }}</p>
+			<p>{{user_data.results[0].first_name}} {{user_data.results[0].last_name}}</p>
+			<p>{{user_data.results[0].login_name}}</p>
+			<p>{{user_data.results[0].gender}}</p>
 		</div>
 		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-primary">Logout</button>
 	</div>
 </div>
 
 
-<div ng-show="isSet(1) && finished_loading" class="row">
+<div ng-show="isSet(1) && finished_loading && isLoggedIn" class="row">
     <div ng-repeat="listing in shop_listings.results" class="col-md-8">
         <div class="thumbnail clearfix">
             <img src="{{thumbnails[listing.listing_id][0].url_170x135}}" class="pull-left">
@@ -59,7 +46,7 @@
                 <h2>{{listing.title}}</h2>
                 <h5>${{listing.price}}</h5>
 
-                <div ng-show="transactions[listing.listing_id].length > 0">
+                <div ng-show="transactions[listing.listing_id]">
                     <table class="table table-hover" style="margin-top: 20px;">
                         <tr>
                             <th>Buyer</th>
@@ -67,16 +54,16 @@
                             <th>Quantity</th>
                             <th>Order Date</th>
                         </tr>
-                        <tr ng-repeat="transaction in transactions[listing.listing_id]">
-                            <td>{{ buyers[transaction.buyer_user_id][0].login_name }}</td>
-                            <td>{{ transaction.price }}</td>
-                            <td>{{ transaction.quantity }}</td>
-                            <td>{{ epoch_seconds_to_local_time(transaction.creation_tsz) }}</td>
+                        <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id]">
+                            <td>{{buyers[transaction.buyer_user_id][0].login_name}}</td>
+                            <td>{{transaction.price}}</td>
+                            <td>{{transaction.quantity}}</td>
+                            <td>{{epoch_seconds_to_local_time(transaction.creation_tsz)}}</td>
                         </tr>
                     </table>
                 </div>
 
-                <div ng-hide="transactions[listing.listing_id].length > 0">
+                <div ng-hide="transactions[listing.listing_id]">
                     No transactions found.
                 </div>
             </div>
