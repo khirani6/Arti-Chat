@@ -109,7 +109,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.get_buyer_email = function(transaction) {
         console.log($scope.receipts[transaction.receipt_id]);
         if (transaction && $scope.receipts[transaction.receipt_id]) {
-            return ("mailto: " + $scope.receipts[transaction.receipt_id][0].buyer_email);
+            return ("mailto:" + $scope.receipts[transaction.receipt_id][0].buyer_email);
         }
 
     }
