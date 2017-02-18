@@ -135,6 +135,30 @@ def get_user_profile(user_id):
     #print (stringified)
     return stringified
 
+@app.route("/users/<user_id>/")
+def get_user(user_id):
+    resp_url = "https://openapi.etsy.com/v2/users/" + user_id
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/receipts/<receipt_id>/")
+def get_receipt(receipt_id):
+    resp_url = "https://openapi.etsy.com/v2/receipts/" + receipt_id
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
 
 
 def convert(data):

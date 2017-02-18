@@ -31,14 +31,16 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails,
+    ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory) {
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
     $scope.viewing_lightbox = false;
 
     $scope.thumbnails = {};
-    $scope.transactions = {};
-    $scope.buyers = {};
+    $scope.transactions = {}; //lookup by listing id
+    $scope.buyers = {}; //lookup by buyer profile id
+    $scope.receipts = {}; //index by receipt ID
 
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
@@ -84,9 +86,15 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     console.log(transaction);
                     $scope.transactions[transaction.listing_id].push(transaction);
                     let user_id = transaction.buyer_user_id;
-                    var user_profile = UserProfileFactory.get({ user_id: user_id }, function(data) {
+                    var user_profile = UserFactory.get({ user_id: user_id }, function(data) {
                         $scope.buyers[user_id] = data.results;
                         $scope.finished_loading = true;
+                    });
+
+                    let receipt_id = transaction.receipt_id;
+                    var receipt = ReceiptFactory.get({ receipt_id: receipt_id} , function(data) {
+                        console.log(data.results);
+                        $scope.receipts[receipt_id] = data.results;
                     });
                 }
         	});
@@ -97,6 +105,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.get_listing_thumbnail = function(id) {
         return ($scope.thumbnails[id]);
     };
+
+    $scope.get_buyer_email = function(transaction) {
+        console.log($scope.receipts[transaction.receipt_id]);
+        if (transaction && $scope.receipts[transaction.receipt_id]) {
+            return ("mailto: " + $scope.receipts[transaction.receipt_id][0].buyer_email);
+        }
+
+    }
 
 	$scope.logout = function () {
         $rootScope.isLoggedIn = false;

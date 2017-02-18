@@ -48,4 +48,18 @@ angular.module('angularFlaskServices', ['ngResource'])
                 params: { user_id: '@user_id'}
 			}
 		});
+	}).factory('UserFactory', function($resource) {
+		return $resource('/users/:user_id', {}, {
+			query: {
+				method: 'GET',
+                params: { user_id: '@user_id'}
+			}
+		});
+	}).factory('ReceiptFactory', function($resource) {
+		return $resource('/receipts/:receipt_id', {}, {
+			query: {
+				method: 'GET',
+                params: { receipt_id: '@receipt_id'}
+			}
+		});
 	});
