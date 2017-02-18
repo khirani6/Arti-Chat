@@ -31,6 +31,10 @@ def login_page():
     return render_template('index.html')
     #return make_response(open('angular_flask/templates/index.html').read())
 
+@app.route('/templates/lightbox.html')
+def lightbox_temp():
+    return make_response(open('angular_flask/templates/lightbox.html').read())
+
 @app.route('/home')
 def home_page():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/profile')
