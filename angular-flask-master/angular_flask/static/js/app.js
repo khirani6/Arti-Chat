@@ -40,5 +40,7 @@ angular.module("AngularFlask", ["ui.bootstrap", "ngRoute", "ngResource", "angula
             requireBase: false
         });
 
-        LightboxProvider.templateUrl = "../templates/lightbox.html";
+        LightboxProvider.templateUrl = "/templates/lightbox.html";
+        //LightboxProvider.fullScreenMode = true;
+
 }]);

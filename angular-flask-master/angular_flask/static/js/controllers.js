@@ -106,7 +106,6 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     };
 
     $scope.get_buyer_email = function(transaction) {
-        console.log($scope.receipts[transaction.receipt_id]);
         if (transaction && $scope.receipts[transaction.receipt_id]) {
             return ("mailto:" + $scope.receipts[transaction.receipt_id][0].buyer_email);
         }
@@ -125,7 +124,23 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         return (d.toLocaleDateString() + " @ " + d.toLocaleTimeString());
     }
 
-    $scope.openLightboxModal = function (index) {
-        Lightbox.openModal($scope.images, index);
+    $scope.expand_order_details = function (transaction) {
+        var listing_id = transaction.listing_id;
+        console.log(transaction);
+        var image_url = $scope.thumbnails[listing_id][0].url_170x135;
+        var thumb_url = $scope.thumbnails[listing_id][0].url_75x75;
+
+        Lightbox["buyer_name"] = $scope.buyers[transaction.buyer_user_id][0].login_name;
+        Lightbox["price"] = transaction.price;
+        Lightbox["receipt_id"] = transaction.receipt_id;
+
+        $scope.images = [
+            {
+                'url': image_url,
+                'thumbUrl': thumb_url
+            }
+        ];
+        Lightbox.openModal($scope.images, 0);
+        console.log(Lightbox);
     };
 }
