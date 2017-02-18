@@ -54,7 +54,7 @@
                             <th>Quantity</th>
                             <th>Order Date</th>
                         </tr>
-                        <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id]">
+                        <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id]" ng-click="openLightboxModal($index)">
                             <td>
                                 <a ng-href="{{get_buyer_email(transaction)}}">
                                     {{buyers[transaction.buyer_user_id][0].login_name}}

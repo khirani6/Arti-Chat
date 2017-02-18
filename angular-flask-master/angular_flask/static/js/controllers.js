@@ -31,8 +31,7 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails,
-    ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory, Lightbox) {
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
     $scope.viewing_lightbox = false;
@@ -125,4 +124,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         var d = new Date(temp * 1000);
         return (d.toLocaleDateString() + " @ " + d.toLocaleTimeString());
     }
+
+    $scope.openLightboxModal = function (index) {
+        Lightbox.openModal($scope.images, index);
+    };
 }
