@@ -62,7 +62,7 @@ def show_cart_contents():
     user_resp = etsy.get('users/__SELF__/') # __SELF__ is replaced with oauth'd userid by API
     cart_resp = etsy.get('users/__SELF__/listings/')
 
-    print cart_resp
+    print (cart_resp)
     return render_template('carts.html', carts=cart_resp.data, user=user_resp.data, logout_url=url_for('logout'))
 
 
@@ -71,7 +71,7 @@ def get_thumbnails(listing_id):
     resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/images"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -83,7 +83,7 @@ def get_all_transactions_for_listing(listing_id):
     resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/transactions"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -94,7 +94,7 @@ def get_all_transactions_for_listing(listing_id):
 def get_listings():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/shops')
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -108,8 +108,7 @@ def get_shop_active_listings(shop_id):
     resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/listings/active"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
-
+    print (resp.data)
 
     stringified = json.dumps(resp.data)
     #print (stringified)
@@ -120,7 +119,7 @@ def get_shop_transactions(shop_id):
     resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/transactions"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -132,7 +131,7 @@ def get_user_profile(user_id):
     resp_url = "https://openapi.etsy.com/v2/users/" + user_id + "/profile"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -144,7 +143,7 @@ def get_user(user_id):
     resp_url = "https://openapi.etsy.com/v2/users/" + user_id
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -156,7 +155,7 @@ def get_receipt(receipt_id):
     resp_url = "https://openapi.etsy.com/v2/receipts/" + receipt_id
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
