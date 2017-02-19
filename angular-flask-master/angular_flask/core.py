@@ -9,7 +9,7 @@ oauth = OAuth()
 
 etsy = oauth.remote_app('etsy',
     base_url='https://openapi.etsy.com/v2',
-    request_token_url='https://openapi.etsy.com/v2/oauth/request_token?scope=profile_r%20email_r%20listings_r',
+    request_token_url='https://openapi.etsy.com/v2/oauth/request_token?scope=profile_r%20email_r%20listings_r%20transactions_r%20transactions_w%20shops_rw%20',
     access_token_url='https://openapi.etsy.com/v2/oauth/access_token',
     authorize_url='https://etsy.com/oauth/signin',
     consumer_key='fvfa290fd1oj7mz3q9sz8de3',

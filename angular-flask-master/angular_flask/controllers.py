@@ -1,7 +1,7 @@
 import os
 
 import json
-
+import collections
 from flask import Flask, request, Response, session
 from flask import render_template, url_for, redirect, send_from_directory
 from flask import send_file, make_response, abort
@@ -31,6 +31,10 @@ def login_page():
     return render_template('index.html')
     #return make_response(open('angular_flask/templates/index.html').read())
 
+@app.route('/templates/lightbox.html')
+def lightbox_temp():
+    return make_response(open('angular_flask/templates/lightbox.html').read())
+
 @app.route('/home')
 def home_page():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/profile')
@@ -51,6 +55,126 @@ def get_etsy_token(token=None):
 def login2():
     return etsy.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
+
+@app.route("/user/cart")
+def show_cart_contents():
+    "Grab some cart and user information"
+    user_resp = etsy.get('users/__SELF__/') # __SELF__ is replaced with oauth'd userid by API
+    cart_resp = etsy.get('users/__SELF__/listings/')
+
+    print cart_resp
+    return render_template('carts.html', carts=cart_resp.data, user=user_resp.data, logout_url=url_for('logout'))
+
+
+@app.route("/listings/<listing_id>/images")
+def get_thumbnails(listing_id):
+    resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/images"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/listings/<listing_id>/transactions")
+def get_all_transactions_for_listing(listing_id):
+    resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/transactions"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    return stringified
+
+
+@app.route("/shops")
+def get_listings():
+    resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/shops')
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+    return render_template('index.html', token=session['etsy_token'], user_data=stringified)
+
+@app.route("/shops/<shop_id>/listings/active")
+def get_shop_active_listings(shop_id):
+    resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/listings/active"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/shops/<shop_id>/transactions")
+def get_shop_transactions(shop_id):
+    resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/transactions"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/users/<user_id>/profile")
+def get_user_profile(user_id):
+    resp_url = "https://openapi.etsy.com/v2/users/" + user_id + "/profile"
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/users/<user_id>/")
+def get_user(user_id):
+    resp_url = "https://openapi.etsy.com/v2/users/" + user_id
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+@app.route("/receipts/<receipt_id>/")
+def get_receipt(receipt_id):
+    resp_url = "https://openapi.etsy.com/v2/receipts/" + receipt_id
+    resp = etsy.get(resp_url)
+    #print "TEST" + str(resp.data.shop_id)
+    print resp.data
+
+
+    stringified = json.dumps(resp.data)
+    #print (stringified)
+    return stringified
+
+
+
+def convert(data):
+    if isinstance(data, basestring):
+        return str(data)
+    elif isinstance(data, collections.Mapping):
+        return dict(map(convert, data.iteritems()))
+    elif isinstance(data, collections.Iterable):
+        return type(data)(map(convert, data))
+    else:
+        return data
+
 
 @app.route('/oauth-authorized')
 @etsy.authorized_handler
