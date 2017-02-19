@@ -16,4 +16,14 @@ etsy = oauth.remote_app('etsy',
     consumer_secret='mrxd5mxylm'
 )
 
+twitter = oauth.remote_app('twitter',
+    base_url='https://api.twitter.com/1/',
+    request_token_url='https://api.twitter.com/oauth/request_token',
+    access_token_url='https://api.twitter.com/oauth/access_token',
+    authorize_url='https://api.twitter.com/oauth/authenticate',
+    consumer_key='kk6nj3NXjgtKxxawy1rDrxtyV',
+    consumer_secret='jgnoJfQvRqvYMCZFfLQzcBVZjbCX3eQartiycWw7htg6dpoyyT'
+)
+
+
 api_manager = APIManager(app, flask_sqlalchemy_db=db)
