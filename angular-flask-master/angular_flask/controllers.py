@@ -2,14 +2,14 @@ import os
 
 import json
 import collections
-from flask import Flask, request, Response, session
+from flask import Flask, request, Response, session, flash
 from flask import render_template, url_for, redirect, send_from_directory
 from flask import send_file, make_response, abort
 
 from angular_flask import app
 
 # routing for API endpoints, generated from the models designated as API_MODELS
-from angular_flask.core import api_manager, etsy
+from angular_flask.core import api_manager, etsy, twitter
 from angular_flask.models import *
 
 for model_name in app.config['API_MODELS']:
@@ -50,11 +50,21 @@ def home_page():
 def get_etsy_token(token=None):
     return session.get('etsy_token')
 
+@twitter.tokengetter
+def get_twitter_token(token=None):
+    return session.get('twitter_token')
+
 
 @app.route('/login2')
 def login2():
     return etsy.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
+
+@app.route('/login3')
+def login3():
+    return twitter.authorize(callback=url_for('oauth_authorized_twitter',
+        next=request.args.get('next') or request.referrer or None))
+
 
 @app.route("/user/cart")
 def show_cart_contents():
@@ -62,7 +72,7 @@ def show_cart_contents():
     user_resp = etsy.get('users/__SELF__/') # __SELF__ is replaced with oauth'd userid by API
     cart_resp = etsy.get('users/__SELF__/listings/')
 
-    print cart_resp
+    print (cart_resp)
     return render_template('carts.html', carts=cart_resp.data, user=user_resp.data, logout_url=url_for('logout'))
 
 
@@ -71,7 +81,7 @@ def get_thumbnails(listing_id):
     resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/images"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -83,7 +93,7 @@ def get_all_transactions_for_listing(listing_id):
     resp_url = "https://openapi.etsy.com/v2/listings/" + listing_id + "/transactions"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -94,7 +104,7 @@ def get_all_transactions_for_listing(listing_id):
 def get_listings():
     resp = etsy.get('https://openapi.etsy.com/v2/users/__SELF__/shops')
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -108,8 +118,7 @@ def get_shop_active_listings(shop_id):
     resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/listings/active"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
-
+    print (resp.data)
 
     stringified = json.dumps(resp.data)
     #print (stringified)
@@ -120,7 +129,7 @@ def get_shop_transactions(shop_id):
     resp_url = "https://openapi.etsy.com/v2/shops/" + shop_id + "/transactions"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -132,7 +141,7 @@ def get_user_profile(user_id):
     resp_url = "https://openapi.etsy.com/v2/users/" + user_id + "/profile"
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -144,7 +153,7 @@ def get_user(user_id):
     resp_url = "https://openapi.etsy.com/v2/users/" + user_id
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -156,7 +165,7 @@ def get_receipt(receipt_id):
     resp_url = "https://openapi.etsy.com/v2/receipts/" + receipt_id
     resp = etsy.get(resp_url)
     #print "TEST" + str(resp.data.shop_id)
-    print resp.data
+    print (resp.data)
 
 
     stringified = json.dumps(resp.data)
@@ -198,6 +207,26 @@ def oauth_authorized(resp):
     # flash('You were signed in as %s' % resp['screen_name'])
     return redirect(next_url)
     #return render_template('home.html', resp=resp)
+
+
+@app.route('/oauth-authorized-twitter')
+@twitter.authorized_handler
+def oauth_authorized_twitter(resp):
+    next_url = url_for('home_page') #request.args.get('next') or url_for('index')
+    if resp is None:
+        flash(u'You denied the request to sign in.')
+        return redirect(next_url)
+
+    session['twitter_token'] = (
+        resp['oauth_token'],
+        resp['oauth_token_secret']
+    )
+    session['twitter_user'] = resp['screen_name']
+
+    flash('You were signed in as %s' % resp['screen_name'])
+    return redirect(next_url)
+
+
 
 # routing for CRUD-style endpoints
 # passes routing onto the angular frontend if the requested resource exists

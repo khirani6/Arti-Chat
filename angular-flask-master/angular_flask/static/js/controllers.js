@@ -40,6 +40,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.transactions = {}; //lookup by listing id
     $scope.buyers = {}; //lookup by buyer profile id
     $scope.receipts = {}; //index by receipt ID
+    $scope.emails = {};
 
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
@@ -92,15 +93,15 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
                     let receipt_id = transaction.receipt_id;
                     var receipt = ReceiptFactory.get({ receipt_id: receipt_id} , function(data) {
-                        console.log(data.results);
                         $scope.receipts[receipt_id] = data.results;
+                        if ($scope.receipts[receipt_id]) {
+                            $scope.emails[transaction.buyer_user_id] = $scope.receipts[receipt_id][0].buyer_email;
+                        }
                     });
                 }
         	});
             $scope.shop_listings = listings;
     	});
-
-        
 	});
 
     $scope.get_listing_thumbnail = function(id) {
@@ -135,6 +136,11 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         Lightbox["buyer_name"] = $scope.buyers[transaction.buyer_user_id][0].login_name;
         Lightbox["price"] = transaction.price;
         Lightbox["receipt_id"] = transaction.receipt_id;
+
+        var receipt = $scope.receipts[transaction.receipt_id];
+        console.log(receipt);
+        Lightbox["shipped"] = (receipt[0].shipping_details["can_mark_as_shipped"]) ? "Shipped" : "Not Shipped";
+        Lightbox["shipping_method"] = receipt[0].shipping_details["shipping_method"];
 
         $scope.images = [
             {

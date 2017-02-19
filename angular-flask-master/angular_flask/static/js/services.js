@@ -62,4 +62,58 @@ angular.module('angularFlaskServices', ['ngResource'])
                 params: { receipt_id: '@receipt_id'}
 			}
 		});
+	})
+	.factory('facebookService', function($q) {
+		var user = {};
+	    return {
+	    	login: function() {
+	    		var deferred = $q.defer();
+	    		FB.login(function () {}, {scope: 'manage_pages, publish_pages'});
+	            FB.api('/me', {}, function(response) {
+	                if (!response || response.error) {
+	                    deferred.reject('Error occured');
+	                } else {
+	                	user.name = response.name;
+	                	user.id = response.id;
+	                	console.log(user.id);
+	                    deferred.resolve(response);
+	                }
+	            });
+	            return deferred.promise;
+	        },
+	        getPages: function () {
+	        	var deferred = $q.defer();
+	        	FB.api('/' + user.id + '/accounts/', {}, function(response) {
+	        		if (!response || response.error) {
+	                    deferred.reject('Error occured');
+	                } else {
+	                	user.page_id = response.data[0].id;
+	                	user.page_access_token = response.data[0].access_token;
+	                	console.log("Setting page id: " + user.page_id);
+	                    deferred.resolve(response);
+	                }
+	        	});
+	            return deferred.promise;
+	        },
+	        postMessage: function (message) {
+	        	var deferred = $q.defer();
+	        	console.log("Line before posting message");
+	        	var url = '/' + user.page_id + '/feed';
+	        	console.log("url = " + url);
+	        	console.log("message = " + message);
+	        	FB.api(url, 'post', {access_token: user.page_access_token, message: message} , function (response) {
+	        		if (!response || response.error) {
+	                    console.log("post failure");
+	                    console.log(JSON.stringify(response));
+	                    deferred.reject('Error occured');
+	                } else {
+	                	console.log("post success");
+	                    deferred.resolve(response);
+	                }
+	        	});
+	            return deferred.promise;
+	        }
+
+	    }
 	});
+
