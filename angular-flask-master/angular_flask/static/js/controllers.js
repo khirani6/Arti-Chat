@@ -40,6 +40,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.transactions = {}; //lookup by listing id
     $scope.buyers = {}; //lookup by buyer profile id
     $scope.receipts = {}; //index by receipt ID
+    $scope.emails = {};
 
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
@@ -92,8 +93,10 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
                     let receipt_id = transaction.receipt_id;
                     var receipt = ReceiptFactory.get({ receipt_id: receipt_id} , function(data) {
-                        console.log(data.results);
                         $scope.receipts[receipt_id] = data.results;
+                        if ($scope.receipts[receipt_id]) {
+                            $scope.emails[transaction.buyer_user_id] = $scope.receipts[receipt_id][0].buyer_email;
+                        }
                     });
                 }
         	});
