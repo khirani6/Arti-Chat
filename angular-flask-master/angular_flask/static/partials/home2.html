@@ -50,11 +50,12 @@
 
                 <div ng-show="transactions[listing.listing_id]" style="margin-top: 20px">
                     <table class="table table-hover">
-                        <tr>
+                        <tr style="width: 100%">
                             <th>Buyer</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Order Date</th>
+                            <th>Status</th>
                         </tr>
                         <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id]" ng-click="expand_order_details(transaction)">
                             <td>
@@ -65,6 +66,7 @@
                             <td>{{transaction.price}}</td>
                             <td>{{transaction.quantity}}</td>
                             <td>{{epoch_seconds_to_local_time(transaction.creation_tsz)}}</td>
+                            <td>{{receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment."}}</td>
                         </tr>
                     </table>
                 </div>
