@@ -137,6 +137,11 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         Lightbox["price"] = transaction.price;
         Lightbox["receipt_id"] = transaction.receipt_id;
 
+        var receipt = $scope.receipts[transaction.receipt_id];
+        console.log(receipt);
+        Lightbox["shipped"] = (receipt[0].shipping_details["can_mark_as_shipped"]) ? "Shipped" : "Not Shipped";
+        Lightbox["shipping_method"] = receipt[0].shipping_details["shipping_method"];
+
         $scope.images = [
             {
                 'url': image_url,

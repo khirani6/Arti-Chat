@@ -23,7 +23,7 @@
   <div class="lightbox-image-container">
     <!-- caption -->
     <div>
-        <table class="table table-hover">
+        <table class="table table-hover" style="width: 450px;">
             <tr>
                 <td>
                     <b>Price</b>
@@ -31,6 +31,9 @@
 
                 <td>
                     {{Lightbox.price}}
+                </td>
+                <td>
+
                 </td>
             </tr>
             <tr>
@@ -41,6 +44,9 @@
                 <td>
                     {{Lightbox.buyer_name}}
                 </td>
+                <td>
+
+                </td>
             </tr>
             <tr>
                 <td>
@@ -49,6 +55,22 @@
 
                 <td>
                     {{Lightbox.receipt_id}}
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Shipping Status</b>
+                </td>
+
+                <td>
+                    {{Lightbox.shipped}}
+                </td>
+
+                <td>
+                    {{Lightbox.shipping_method}}
                 </td>
             </tr>
         </table>
