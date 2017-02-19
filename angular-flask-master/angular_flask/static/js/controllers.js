@@ -31,7 +31,7 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
-function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory, Lightbox) {
+function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory, Lightbox, facebookService) {
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
     $scope.viewing_lightbox = false;
@@ -99,6 +99,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         	});
             $scope.shop_listings = listings;
     	});
+
+        
 	});
 
     $scope.get_listing_thumbnail = function(id) {
@@ -143,4 +145,18 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         Lightbox.openModal($scope.images, 0);
         console.log(Lightbox);
     };
+
+    $scope.connectToFacebook = function() {
+        facebookService.login().then(function (response) {
+            facebookService.getPages().then(function(response) {
+                console.log("About to post message");
+                facebookService.postMessage("Hello, World");
+            });
+        });
+    }
+    $scope.announcementText = "";
+    $scope.postAnnouncement = function() {
+        facebookService.postMessage($scope.announcementText);
+    }
+
 }
