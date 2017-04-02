@@ -11,8 +11,8 @@ cd angular-flask-master
 pip install virtualenv
 virtualenv venv
 source venv/bin/activate
-pip install -r requirements.txt
-python runserver.py
+pip3 install -r requirements.txt
+python3 runserver.py
 python manage.py create_db && python manage.py seed_db --seedfile 'data/db_items.json'
 ```
 
