@@ -31,6 +31,7 @@ function LoginController($scope, $window, $rootScope) {
 		$window.location.href='/login2';
 	}
 }
+
 function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveShopListings, ListingThumbnails, ListingTransactions, UserProfileFactory, UserFactory, ReceiptFactory, Lightbox, facebookService) {
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
@@ -163,6 +164,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.announcementText = "";
     $scope.postAnnouncement = function() {
         facebookService.postMessage($scope.announcementText);
+    }
+
+    $scope.loginTwitterButtonPress = function () {
+        $window.location.href='/login3';
+    }
+
+    $scope.verifyTwitter = function () {
+        $window.location.href='/verify-twitter';
     }
 
 }

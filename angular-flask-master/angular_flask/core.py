@@ -16,13 +16,23 @@ etsy = oauth.remote_app('etsy',
     consumer_secret='mrxd5mxylm'
 )
 
-twitter = oauth.remote_app('twitter',
-    base_url='https://api.twitter.com/1/',
+t = {}
+t['request_token_url'] = 'https://api.twitter.com/oauth/request_token'
+t['access_token_url'] = 'https://api.twitter.com/oauth/access_token'
+t['authorize_url'] = 'https://api.twitter.com/oauth/authenticate'
+t['consumer_key'] = 'r5dp81cC7nk1Vkk6FwsBJICHf'
+t['consumer_secret'] = '58Rf705PdE8SuWolk5DxAptS6kHyfASB1TptLf5yZevHsGgaLu'
+
+
+
+twittero = oauth.remote_app(
+    base_url='https://api.twitter.com/1.1/',
     request_token_url='https://api.twitter.com/oauth/request_token',
     access_token_url='https://api.twitter.com/oauth/access_token',
     authorize_url='https://api.twitter.com/oauth/authenticate',
-    consumer_key='kk6nj3NXjgtKxxawy1rDrxtyV',
-    consumer_secret='jgnoJfQvRqvYMCZFfLQzcBVZjbCX3eQartiycWw7htg6dpoyyT'
+    consumer_key='r5dp81cC7nk1Vkk6FwsBJICHf',
+    consumer_secret='58Rf705PdE8SuWolk5DxAptS6kHyfASB1TptLf5yZevHsGgaLu',
+    name='twitter'
 )
 
 
