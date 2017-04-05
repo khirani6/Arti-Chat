@@ -162,8 +162,43 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         });
     }
     $scope.announcementText = "";
+    var email = false;
+    var fb = false;
+    var twitter = false;
+
+    $scope.emailClick = function () {
+        if (email == true) {
+            email = false;
+        } else if (email == false) {
+            email = true;
+        }
+    }
+
+    $scope.fbClick = function () {
+        if (fb == true) {
+            fb = false;
+        } else if (fb == false) {
+            fb = true;
+        }
+    }
+
+    $scope.twitterClick = function () {
+        if (twitter == true) {
+            twitter = false;
+        } else if (twitter == false) {
+            twitter = true;
+        }
+    }
+
     $scope.postAnnouncement = function() {
-        facebookService.postMessage($scope.announcementText);
+        if (fb) {
+            facebookService.postMessage($scope.announcementText);
+        }
+        if (twitter) {
+            var url = "/tweet/" + $scope.announcementText;
+            $window.location.href=url;
+        }
+
     }
 
     $scope.loginTwitterButtonPress = function () {

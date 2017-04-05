@@ -22,6 +22,7 @@ for model_name in app.config['API_MODELS']:
     api_manager.create_api(model_class, methods=['GET', 'POST'])
 
 api_session = api_manager.session
+api = None
 
 consumer = oauth2.Consumer(t['consumer_key'], t['consumer_secret'])
 client = oauth2.Client(consumer)
@@ -65,72 +66,19 @@ def get_twitter_token(token=None):
 
 @app.route('/login2')
 def login2():
-    print ('login2 is reached...')
-    print ('request.args.get("next")', request.args.get('next'))
-    print ('request.referrer', request.referrer)
     return etsy.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
 
 @app.route('/login3')
 def login3():
     resp, content = client.request(t['request_token_url'], "GET")
-    # print ('RESPONSE:\n', resp)
-    # print ('CONTENT:\n', content)
-    # stringified_resp = json.dumps(resp.data)
-    # stringified_content = json.dumps(content.data)
-    # print ('String_RESPONSE:\n', stringified_resp)
-    # print ('String_CONTENT:\n', stringified_content)
-
-    # if resp['status'] != '200':
-        # raise Exception("Invalid response from Twitter.")
-    # resp2, content2 = twittero.get(t['request_token_url'])
-    print (session)
     temp = {}
     temp['request_token'] = dict(urllib.parse.parse_qsl(content))
-    print (temp)
     session['request_token'] = {}
-    print ('-----------------')
     for k, v in temp['request_token'].items():
-        # session['request_token'] =
-        print (k, type(k), k.decode("utf-8"), type(k.decode("utf-8")))
-        print (v, type(v), v.decode("utf-8"), type(v.decode("utf-8")))
         session['request_token'][k.decode("utf-8")] = v.decode("utf-8")
-        print ('-----------------')
-    print (session)
-    # session['request_token'] = dict(cgi.parse_qsl(content))
-    # session2 = {}
-    # session2['request_token'] = {} # dict(cgi.parse_qsl(content))
-    # print ("session['request_token']", session['request_token'])
-    # print ("session['request_token']['ouath_token']", session['request_token']['oauth_token'])
-    # for k, v in session['request_token'].items():
-        # session2['request_token'][k.decode("utf-8")] = v.decode("utf-8")
-        # print (k, type(k))
-        # print (v, type(v))
-        # print (k.decode("utf-8")  == 'oauth_token')
-        # print ('----------')
-    # session.update(session2)
-    # session = session2
-    # for k, v in session2['request_token'].items():
-        # session2['request_token'][k.decode("utf-8")] = v.decode("utf-8")
-        # print (k, type(k))
-        # print (v, type(v))
-        # print ('----------')
     url = "%s?oauth_token=%s" % (t['authorize_url'], session['request_token']['oauth_token'])
-    # print (url)
-    # url = "https://www.google.com"
-    # api = twitter.Api(consumer_key=t['consumer_key'],
-    #                   consumer_secret=t['consumer_secret'],
-    #                   access_token_key=session['request_token']['oauth_token'],
-    #                   access_token_secret=session['request_token']['oauth_token'])
-    # print(api.VerifyCredentials())
     return redirect(url, 302)
-    # return HttpResponseRedirect(url)
-    # print ('login3 is reached...')
-    # print ('request.args.get("next")', request.args.get('next'))
-    # print ('request.referrer', request.referrer)
-    # print ('url_for("login_page")', url_for("login_page"))
-    # return twitter.authorize(callback=url_for('oauth_authorized_twitter',
-    #     next=request.args.get('next') or url_for('login_page') or None))
 
 @app.route('/verify-twitter')
 def verifty_twitter():
@@ -145,26 +93,21 @@ def verifty_twitter():
     access_token = {}
     access_token_2 = dict(urllib.parse.parse_qsl(content))
     for k, v in access_token_2.items():
-        # session['request_token'] =
-        print (k, type(k), k.decode("utf-8"), type(k.decode("utf-8")))
-        print (v, type(v), v.decode("utf-8"), type(v.decode("utf-8")))
-        # session['request_token'][k.decode("utf-8")] = v.decode("utf-8")
         access_token[k.decode("utf-8")] = v.decode("utf-8")
-        print ('-----------------')
-    # print( "Access Token:")
-    # print( "    - oauth_token        = %s" % access_token['oauth_token'])
-    # print( "    - oauth_token_secret = %s" % access_token['oauth_token_secret'])
-    # print()
-    # print( "You may now access protected resources using the access tokens above." )
-    # print()
-    print (access_token)
+    global api
     api = twitter.Api(consumer_key=t['consumer_key'],
                       consumer_secret=t['consumer_secret'],
                       access_token_key=access_token['oauth_token'],
                       access_token_secret=access_token['oauth_token_secret'])
-    status = api.PostUpdate('Wubba Lubba Dub Dub!!')
-    ret = "%s just posted: %s" % (status.user.name, status.text)
-    return ret
+    # status = api.PostUpdate('Wubba Lubba Dub Dub!!')
+    # ret = "%s just posted: %s" % (status.user.name, status.text)
+    return redirect(url_for('home_page'))
+
+
+@app.route('/tweet/<path:message>')
+def tweet(message):
+    api.PostUpdate(message)
+    return redirect(url_for('home_page'))
 
 
 @app.route("/user/cart")
