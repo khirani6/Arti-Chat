@@ -55,9 +55,9 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
    	var user_data = user_data_global.replace(new RegExp("&#34;", "g"), "\"");
 	$scope.user_data = JSON.parse(user_data);
-    console.log($scope.user_data)
+    console.log($scope.user_data);
 
-    $scope.isLoggedIn = ($scope.user_data != null) //temp way of handling this
+    $scope.isLoggedIn = ($scope.user_data != null); //temp way of handling this
     var shop_id = null;
     var shop = Shops.get({}, function(data) {
 		$scope.shop = data;
@@ -162,6 +162,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         });
     }
     $scope.announcementText = "";
+    $scope.verifyTwitterText = "";
     var email = false;
     var fb = false;
     var twitter = false;
@@ -206,7 +207,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     }
 
     $scope.verifyTwitter = function () {
-        $window.location.href='/verify-twitter';
+        var url = "/verify-twitter/" + $scope.verifyTwitterText;
+        $window.location.href=url;
     }
 
 }

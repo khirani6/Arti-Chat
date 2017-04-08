@@ -80,12 +80,12 @@ def login3():
     url = "%s?oauth_token=%s" % (t['authorize_url'], session['request_token']['oauth_token'])
     return redirect(url, 302)
 
-@app.route('/verify-twitter')
-def verifty_twitter():
-    accepted = 'n'
-    while accepted.lower() == 'n':
-        accepted = input('Have you authorized me? (y/n) ')
-    oauth_verifier = input('What is the PIN? ')
+@app.route('/verify-twitter/<path:pin>')
+def verify_twitter(pin):
+    # accepted = 'n'
+    # while accepted.lower() == 'n':
+        # accepted = input('Have you authorized me? (y/n) ')
+    oauth_verifier = pin # input('What is the PIN? ')
     token = oauth2.Token(session['request_token']['oauth_token'], session['request_token']['oauth_token_secret'])
     token.set_verifier(oauth_verifier)
     client = oauth2.Client(consumer, token)
