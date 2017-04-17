@@ -104,7 +104,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                         $scope.buyers[user_id] = data.results;
                         $scope.finished_loading = true;
                         transaction.buyer_name = data.results[transaction.buyer_user_id][0].login_name;
-
+                        transaction.cost = $scope.calculate_cost(transaction.price, transaction.quantity);
                         $scope.make_consistent();
                     });
 
@@ -152,13 +152,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000)) + (1487225264 + 10000000)));
                     var buyer_name = possibleNames[Math.floor(Math.random() * possibleNames.length)];
 
-
+                    var quantity = Math.round((Math.random() * (1 - 10) + 10));
 
                     var test_trans = {
                         buyer_user_id: -x,
                         buyer_name: buyer_name,
                         price: listing.price,
-                        quantity: Math.round((Math.random() * (1 - 10) + 10)),
+                        quantity: quantity,
+                        cost: $scope.calculate_cost(listing.price, quantity),
                         creation_tsz: creation_tsz,
                         time:  $scope.epoch_seconds_to_local_time(creation_tsz),
                         status: possibleStatuses[Math.round(Math.random() * (0 - 2) + 2)],
@@ -197,6 +198,12 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                 if ($scope.receipts[transaction.receipt_id]) {
                     $scope.transactions[key][i].status = $scope.receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment.";
                 }
+
+
+                if (!$scope.transactions[key][i].cost) {
+                    $scope.transactions[key][i].cost = $scope.calculate_cost(transaction.price, quantity);
+                }
+
             }
         }
     }
