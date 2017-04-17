@@ -146,15 +146,17 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         if (!$scope.madeConsistent) {
             //Testing Data
             var possibleStatuses = ["Awaiting payment.", "Shipped", "Not Shipped"];
-            var possibleNames = ["kim", "george", "robert", "john", "james"]
+            var possibleNames = ["kim", "george", "robert", "john", "james", "sarah", "mike", "justin", "angela"]
             for (var listing of $scope.shop_listings.results) {
-                for (var x = 0; x < 5; x++) {
+                for (var x = 0; x < 4; x++) {
                     var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000)) + (1487225264 + 10000000)));
+                    var buyer_name = possibleNames[Math.floor(Math.random() * possibleNames.length)];
+
 
 
                     var test_trans = {
                         buyer_user_id: -x,
-                        buyer_name: possibleNames[Math.floor(Math.random() * possibleNames.length)] + $scope.randomString(),
+                        buyer_name: buyer_name,
                         price: (Math.random() * (0.00 - 200.0200) + 200.0200).toFixed(2),
                         quantity: Math.round((Math.random() * (1 - 10) + 10)),
                         creation_tsz: creation_tsz,
@@ -166,13 +168,17 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     }
 
                     for (var i = possibleNames.length-1; i >= 0; i--) {
-                        if (possibleNames[i] === test_trans.buyer_name) {
+                        if (possibleNames[i] === buyer_name) {
                             possibleNames.splice(i, 1);
                         }
                     }
+                    test_trans["buyer_name"] += $scope.randomString();
+
+
+
                     $scope.emails[test_trans.buyer_user_id] = $scope.randomString() + "@gmail.com";
                     $scope.transactions[listing.listing_id].push(test_trans);
-
+                    $scope.transactionsListView.push(test_trans);
                     //$scope.buyers[test_trans.buyer_user_id] = "hey";
                 }
             }
