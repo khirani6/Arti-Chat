@@ -37,6 +37,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.finished_loading = false;
     $scope.viewing_lightbox = false;
     $scope.madeConsistent = false;
+    $scope.listView = false;
 
     $scope.thumbnails = {};
     $scope.transactions = {}; //lookup by listing id
@@ -45,6 +46,9 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.emails = {};
     $scope.search = "";
 	$scope.tab = 1;
+
+    $scope.transactionsListView = [];
+
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
       console.log($scope.transactions);
@@ -54,12 +58,17 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
       return ($scope.tab === tabNum);
     };
 
+    $scope.toggleListView = function() {
+        $scope.listView = !$scope.listView;
+    }
+
    	var user_data = user_data_global.replace(new RegExp("&#34;", "g"), "\"");
 	$scope.user_data = JSON.parse(user_data);
     console.log($scope.user_data);
 
     $scope.isLoggedIn = ($scope.user_data != null); //temp way of handling this
     var shop_id = null;
+
     var shop = Shops.get({}, function(data) {
 		$scope.shop = data;
         console.log($scope.shop);
@@ -79,6 +88,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             	});
             }
             $scope.track = []
+
+
             var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
                 for (var transaction of transactions.results) {
                     $scope.transactions[transaction.listing_id] = [];
@@ -92,7 +103,9 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     var user_profile = UserFactory.get({ user_id: user_id }, function(data) {
                         $scope.buyers[user_id] = data.results;
                         $scope.finished_loading = true;
-                        transaction.buyer_name = data.results[transaction.buyer_user_id][0].login_name
+                        transaction.buyer_name = data.results[transaction.buyer_user_id][0].login_name;
+
+                        $scope.make_consistent();
                     });
 
                     $scope.transactions[transaction.listing_id].push(transaction);
@@ -104,7 +117,10 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                         if ($scope.receipts[receipt_id]) {
                             $scope.emails[transaction.buyer_user_id] = $scope.receipts[receipt_id][0].buyer_email;
                         }
+                        $scope.make_consistent();
                     });
+
+                    $scope.transactionsListView.push(transaction);
                 }
         	});
             $scope.shop_listings = listings;
@@ -128,21 +144,55 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
     $scope.make_consistent = function() {
         if (!$scope.madeConsistent) {
-            for (var key in $scope.transactions) {
-                var curr_transactions = $scope.transactions[key];
-                for (var i = 0; i < curr_transactions.length; i++) {
-                    var transaction = curr_transactions[i];
-                    if ($scope.buyers[transaction.buyer_user_id]) {
-                        $scope.transactions[key][i].buyer_name = $scope.buyers[transaction.buyer_user_id][0].login_name;
+            //Testing Data
+            var possibleStatuses = ["Awaiting payment.", "Shipped", "Not Shipped"];
+            var possibleNames = ["kim", "george", "robert", "john", "james"]
+            for (var listing of $scope.shop_listings.results) {
+                for (var x = 0; x < 5; x++) {
+                    var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000)) + (1487225264 + 10000000)));
+
+
+                    var test_trans = {
+                        buyer_user_id: -x,
+                        buyer_name: possibleNames[Math.floor(Math.random() * possibleNames.length)] + $scope.randomString(),
+                        price: (Math.random() * (0.00 - 200.0200) + 200.0200).toFixed(2),
+                        quantity: Math.round((Math.random() * (1 - 10) + 10)),
+                        creation_tsz: creation_tsz,
+                        time:  $scope.epoch_seconds_to_local_time(creation_tsz),
+                        status: possibleStatuses[Math.round(Math.random() * (0 - 2) + 2)],
+                        listing_id: listing.listing_id,
+                        shipping_method: "USPS",
+                        receipt_id: $scope.randomReceipt()
                     }
-                    
-                    if ($scope.receipts[transaction.receipt_id]) {
-                        $scope.transactions[key][i].status = $scope.receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment."
+
+                    for (var i = possibleNames.length-1; i >= 0; i--) {
+                        if (possibleNames[i] === test_trans.buyer_name) {
+                            possibleNames.splice(i, 1);
+                        }
                     }
+                    $scope.emails[test_trans.buyer_user_id] = $scope.randomString() + "@gmail.com";
+                    $scope.transactions[listing.listing_id].push(test_trans);
+
+                    //$scope.buyers[test_trans.buyer_user_id] = "hey";
+                }
+            }
+
+            $scope.madeConsistent = true;
+        }
+
+        for (var key in $scope.transactions) {
+            var curr_transactions = $scope.transactions[key];
+            for (var i = 0; i < curr_transactions.length; i++) {
+                var transaction = curr_transactions[i];
+                if ($scope.buyers[transaction.buyer_user_id]) {
+                    $scope.transactions[key][i].buyer_name = $scope.buyers[transaction.buyer_user_id][0].login_name;
+                }
+
+                if ($scope.receipts[transaction.receipt_id]) {
+                    $scope.transactions[key][i].status = $scope.receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment.";
                 }
             }
         }
-        $scope.madeConsistent = true;
     }
 
 	$scope.logout = function () {
@@ -163,14 +213,18 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         var image_url = $scope.thumbnails[listing_id][0].url_170x135;
         var thumb_url = $scope.thumbnails[listing_id][0].url_75x75;
 
-        Lightbox["buyer_name"] = $scope.buyers[transaction.buyer_user_id][0].login_name;
+        Lightbox["buyer_name"] = $scope.transactions[transaction.listing_id].buyer_name || transaction.buyer_name;
         Lightbox["price"] = transaction.price;
         Lightbox["receipt_id"] = transaction.receipt_id;
 
         var receipt = $scope.receipts[transaction.receipt_id];
         console.log(receipt);
-        Lightbox["shipped"] = (receipt[0].shipping_details["can_mark_as_shipped"]) ? "Shipped" : "Not Shipped";
-        Lightbox["shipping_method"] = receipt[0].shipping_details["shipping_method"];
+        Lightbox["shipped"] = transaction.status;
+        if (receipt) {
+            Lightbox["shipping_method"] = receipt[0].shipping_details["shipping_method"];
+        } else {
+            Lightbox["shipping_method"] = transaction.shipping_method
+        }
 
         $scope.images = [
             {
@@ -238,9 +292,29 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.verifyTwitter = function () {
         var url = "/verify-twitter/" + $scope.verifyTwitterText;
         $window.location.href = url;
+    };
+
+    $scope.randomString = function () {
+        var text = "";
+        var possible = "0123456789";
+
+        for (var i = 0; i < 4; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
     }
 
+    $scope.randomReceipt = function () {
+        var text = "";
+        var possible = "0123456789";
 
+        for (var i = 0; i < 10; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    }
     $scope.availableSearchParams = [
         { key: "price", name: "Price", placeholder: "Price..." },
         { key: "buyer_name", name: "Name", placeholder: "Name..." },
