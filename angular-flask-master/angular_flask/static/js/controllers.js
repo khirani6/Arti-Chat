@@ -157,7 +157,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     var test_trans = {
                         buyer_user_id: -x,
                         buyer_name: buyer_name,
-                        price: (Math.random() * (0.00 - 200.0200) + 200.0200).toFixed(2),
+                        price: listing.price,
                         quantity: Math.round((Math.random() * (1 - 10) + 10)),
                         creation_tsz: creation_tsz,
                         time:  $scope.epoch_seconds_to_local_time(creation_tsz),
@@ -211,7 +211,11 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         var temp = parseInt(str);
         var d = new Date(temp * 1000);
         return (d.toLocaleDateString() + " @ " + d.toLocaleTimeString());
-    }
+    };
+
+    $scope.calculate_cost = function(price, quantity) {
+        return (parseFloat(price) * quantity).toFixed(2);
+    };
 
     $scope.expand_order_details = function (transaction) {
         var listing_id = transaction.listing_id;
@@ -249,7 +253,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                 facebookService.postMessage("Hello, World");
             });
         });
-    }
+    };
+
     $scope.announcementText = "";
     $scope.verifyTwitterText = "";
     var email = false;
