@@ -36,13 +36,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.isLoggedIn = false;
     $scope.finished_loading = false;
     $scope.viewing_lightbox = false;
+    $scope.madeConsistent = false;
 
     $scope.thumbnails = {};
     $scope.transactions = {}; //lookup by listing id
     $scope.buyers = {}; //lookup by buyer profile id
     $scope.receipts = {}; //index by receipt ID
     $scope.emails = {};
-
+    $scope.search = "";
 	$scope.tab = 1;
     $scope.setTab = function(newTab) {
       $scope.tab = newTab;
@@ -77,7 +78,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                     i++;
             	});
             }
-
+            $scope.track = []
             var transactions_req = ListingTransactions.get({ shop_id: shop_id }, function(transactions) {
                 for (var transaction of transactions.results) {
                     $scope.transactions[transaction.listing_id] = [];
@@ -85,12 +86,17 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
                 for (var transaction of transactions.results) {
                     console.log(transaction);
-                    $scope.transactions[transaction.listing_id].push(transaction);
+                    transaction.time = $scope.epoch_seconds_to_local_time(transaction.creation_tsz);
+
                     let user_id = transaction.buyer_user_id;
                     var user_profile = UserFactory.get({ user_id: user_id }, function(data) {
                         $scope.buyers[user_id] = data.results;
                         $scope.finished_loading = true;
+                        transaction.buyer_name = data.results[transaction.buyer_user_id][0].login_name
                     });
+
+                    $scope.transactions[transaction.listing_id].push(transaction);
+
 
                     let receipt_id = transaction.receipt_id;
                     var receipt = ReceiptFactory.get({ receipt_id: receipt_id} , function(data) {
@@ -114,6 +120,29 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             return ("mailto:" + $scope.receipts[transaction.receipt_id][0].buyer_email);
         }
 
+    }
+
+    $scope.are_transactions_present = function (listing) {
+
+    };
+
+    $scope.make_consistent = function() {
+        if (!$scope.madeConsistent) {
+            for (var key in $scope.transactions) {
+                var curr_transactions = $scope.transactions[key];
+                for (var i = 0; i < curr_transactions.length; i++) {
+                    var transaction = curr_transactions[i];
+                    if ($scope.buyers[transaction.buyer_user_id]) {
+                        $scope.transactions[key][i].buyer_name = $scope.buyers[transaction.buyer_user_id][0].login_name;
+                    }
+                    
+                    if ($scope.receipts[transaction.receipt_id]) {
+                        $scope.transactions[key][i].status = $scope.receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment."
+                    }
+                }
+            }
+        }
+        $scope.madeConsistent = true;
     }
 
 	$scope.logout = function () {
@@ -208,7 +237,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
     $scope.verifyTwitter = function () {
         var url = "/verify-twitter/" + $scope.verifyTwitterText;
-        $window.location.href=url;
+        $window.location.href = url;
     }
 
+
+    $scope.availableSearchParams = [
+        { key: "price", name: "Price", placeholder: "Price..." },
+        { key: "buyer_name", name: "Name", placeholder: "Name..." },
+        { key: "emailAddress", name: "E-Mail", placeholder: "E-Mail...", allowMultiple: true },
+        { key: "time", name: "Time", placeholder: "Time..." }
+    ];
 }

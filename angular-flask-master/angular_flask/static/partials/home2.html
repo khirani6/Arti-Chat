@@ -1,91 +1,103 @@
-<div ng-show="isLoggedIn" id="home-tab-content">
-    <div id="home-tabs">
-    	<ul class="nav nav-pills">
-    		<li ng-class="{ active: isSet(1) }">
-    			<a href ng-click="setTab(1)">Dashboard</a>
-    		</li>
-    		<li ng-class="{ active: isSet(2) }">
-    			<a href ng-click="setTab(2)">Announcements</a>
-    		</li>
-    		<li ng-class="{ active: isSet(3) }">
-    			<a href ng-click="setTab(3)">Settings</a>
-    		</li>
-    	</ul>
+<div ng-mousemove="make_consistent()" ng-focus="make_consistent()">
+    <div ng-show="isLoggedIn" id="home-tab-content">
+        <div id="home-tabs">
+        	<ul class="nav nav-pills">
+        		<li ng-class="{ active: isSet(1) }">
+        			<a href ng-click="setTab(1)">Dashboard</a>
+        		</li>
+        		<li ng-class="{ active: isSet(2) }">
+        			<a href ng-click="setTab(2)">Announcements</a>
+        		</li>
+        		<li ng-class="{ active: isSet(3) }">
+        			<a href ng-click="setTab(3)">Settings</a>
+        		</li>
+        	</ul>
+        </div>
+
+    	<div ng-show="isSet(2)" id="tab-announcements">
+    		<div class="tab-content">
+    			<p>What would you like to announce?</p>
+    			<textarea ng-model="announcementText"></textarea>
+    			<p>Where do you want to post?</p>
+    			<div class="checkbox-div"><input type="checkbox" ng-click="emailClick()"> Email</div>
+    			<div class="checkbox-div"><input type="checkbox" ng-click="fbClick()"> Facebook</div>
+    			<div class="checkbox-div"><input type="checkbox" ng-click="twitterClick()"> Twitter</div>
+    			<button id="post-announcement" type="button" class="btn btn-success"
+                    ng-click="postAnnouncement()">Post</button>
+    		</div>
+
+    		<p>Tab #2</p>
+    	</div>
+    	<div ng-show="isSet(3)" id="tab-settings">
+    		<img ng-src="{{user_data.results[0].image_url_75x75}}" />
+    		<div class="profile-info">
+    			<p>{{user_data.results[0].first_name}} {{user_data.results[0].last_name}}</p>
+    			<p>{{user_data.results[0].login_name}}</p>
+    			<p>{{user_data.results[0].gender}}</p>
+    		</div>
+            <button id="facebook-connect" ng-click="connectToFacebook()">Connect with Facebook</button>
+            <button id="login-with-twitter" ng-click="loginTwitterButtonPress()">
+                    Login with Twitter
+            </button>
+            <p>Enter PIN to verify Twitter Account</p>
+            <textarea ng-model="verifyTwitterText"></textarea>
+            <button id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
+    		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-primary">Logout</button>
+    	</div>
+
     </div>
 
-	<div ng-show="isSet(2)" id="tab-announcements">
-		<div class="tab-content">
-			<p>What would you like to announce?</p>
-			<textarea ng-model="announcementText"></textarea>
-			<p>Where do you want to post?</p>
-			<div class="checkbox-div"><input type="checkbox" ng-click="emailClick()"> Email</div>
-			<div class="checkbox-div"><input type="checkbox" ng-click="fbClick()"> Facebook</div>
-			<div class="checkbox-div"><input type="checkbox" ng-click="twitterClick()"> Twitter</div>
-			<button id="post-announcement" type="button" class="btn btn-success"
-                ng-click="postAnnouncement()">Post</button>
-		</div>
 
-		<p>Tab #2</p>
-	</div>
-	<div ng-show="isSet(3)" id="tab-settings">
-		<img ng-src="{{user_data.results[0].image_url_75x75}}" />
-		<div class="profile-info">
-			<p>{{user_data.results[0].first_name}} {{user_data.results[0].last_name}}</p>
-			<p>{{user_data.results[0].login_name}}</p>
-			<p>{{user_data.results[0].gender}}</p>
-		</div>
-        <button id="facebook-connect" ng-click="connectToFacebook()">Connect with Facebook</button>
-        <button id="login-with-twitter" ng-click="loginTwitterButtonPress()">
-                Login with Twitter
-        </button>
-        <p>Enter PIN to verify Twitter Account</p>
-        <textarea ng-model="verifyTwitterText"></textarea>
-        <button id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
-		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-primary">Logout</button>
-	</div>
+    <div ng-show="isSet(1) && finished_loading && isLoggedIn" class="row" ng-mousemove="make_consistent()" ng-focus="make_consistent()">
+        <form>
+            <div class="form-group" style="margin-left: 20%; margin-left:20%">
+                <input class="form-control input-xxlarge" type="text" ng-model="search" placeholder="Search">
+            </div>
+        </form>
+        <!--<nit-advanced-searchbox ng-model="searchParams" parameters="availableSearchParams" ng-mouseover="make_consistent()"
+            placeholder="Search...">
+        </nit-advanced-searchbox>-->
+        <div ng-repeat="listing in shop_listings.results" class="col-md-8">
+            <div>
+                <div class="thumbnail clearfix">
+                    <img src="{{thumbnails[listing.listing_id][0].url_170x135}}" class="pull-left">
+                    <div class="caption" class="pull-right">
+                        <h2>{{listing.title}}</h2>
+                        <h5>${{listing.price}}</h5>
 
-</div>
+                        <div ng-show="transactions[listing.listing_id]" style="margin-top: 20px">
+                            <table class="table table-hover">
+                                <tr style="width: 100%">
+                                    <th>Buyer</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id] | filter:search" ng-click="expand_order_details(transaction)">
+                                    <td>
+                                        <a href="mailto:{{emails[transaction.buyer_user_id]}}">
+                                            {{transaction.buyer_name || buyers[transaction.buyer_user_id][0].login_name}}
+                                        </a>
+                                    </td>
+                                    <td>{{transaction.price}}</td>
+                                    <td>{{transaction.quantity}}</td>
+                                    <td>{{transaction.time}}</td>
+                                    <td>{{transaction.status || receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment."}}</td>
+                                </tr>
+                            </table>
+                        </div>
 
-
-<div ng-show="isSet(1) && finished_loading && isLoggedIn" class="row">
-    <div ng-repeat="listing in shop_listings.results" class="col-md-8">
-        <div class="thumbnail clearfix">
-            <img src="{{thumbnails[listing.listing_id][0].url_170x135}}" class="pull-left">
-            <div class="caption" class="pull-right">
-                <h2>{{listing.title}}</h2>
-                <h5>${{listing.price}}</h5>
-
-                <div ng-show="transactions[listing.listing_id]" style="margin-top: 20px">
-                    <table class="table table-hover">
-                        <tr style="width: 100%">
-                            <th>Buyer</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id]" ng-click="expand_order_details(transaction)">
-                            <td>
-                                <a href="mailto:{{emails[transaction.buyer_user_id]}}">
-                                    {{buyers[transaction.buyer_user_id][0].login_name}}
-                                </a>
-                            </td>
-                            <td>{{transaction.price}}</td>
-                            <td>{{transaction.quantity}}</td>
-                            <td>{{epoch_seconds_to_local_time(transaction.creation_tsz)}}</td>
-                            <td>{{receipts[transaction.receipt_id][0].was_paid ? "Ready to be shipped." : "Awaiting payment."}}</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div ng-hide="transactions[listing.listing_id]">
-                    No transactions found.
+                        <div ng-hide="transactions[listing.listing_id]">
+                            No transactions found.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div ng-show="isSet(1) && !finished_loading && isLoggedIn" class="row" style="margin: auto; padding-left: 50%; padding-top:5%">
-    <div class="loader"></div>
+    <div ng-show="isSet(1) && !finished_loading && isLoggedIn" class="row" style="margin: auto; padding-left: 50%; padding-top:5%">
+        <div class="loader"></div>
+    </div>
 </div>

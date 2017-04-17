@@ -1091,10 +1091,10 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
+  height: 70px;
   padding: 4px 6px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 30px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
@@ -1303,6 +1303,7 @@ textarea::-webkit-input-placeholder {
 
 .input-xxlarge {
   width: 530px;
+  height: auto;
 }
 
 input[class*="span"],
