@@ -217,20 +217,27 @@ div[class^="col-"] {
 
 
 #tab-settings {
-	text-align: center;
+	/*text-align: center;*/
 }
 #tab-settings img, div.profile-info {
-	display: inline-block;
+	/*display: inline-block;*/
 }
-#tab-settings img {
-	width: 75px;
+#tab-settings img.profile-img {
+	width: 100px;
+	float: left;
+	margin-right: 20px;
 }
 
 #tab-settings div.profile-info {
 	width: 150px;
+	display: inline;
 }
 #tab-settings #logout-button {
 	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-family: Roboto, sans-serif;
+	padding: 10px;
 }
 button#facebook-connect {
   border-color: #2d5073;
@@ -276,3 +283,165 @@ button#facebook-connect {
 .fader.ng-hide-add {
   transition: all linear 500ms;
 }
+
+
+
+#main-header-abbr {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 4em;
+}
+
+#main-header-abbr, #home-tabs {
+	display: inline-block;
+}
+#main-header-abbr {
+	position: relative;
+	top: -50px;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+	color: #fff;
+	background-color: #FF721A;
+}
+
+.nav-pills > li > a {
+	color: #FF721A;
+	font-family: 'Roboto', sans-serif;
+}
+.nav-pills > li > a > p {
+	margin: 5px 0px;
+}
+.nav-pills > li > a:hover {
+	color: #F45800;
+	background-color: rgba(244, 88, 0, 0.1);
+}
+
+
+/* Announcements Tab */
+
+.tab-content {
+	font-family: Roboto, sans-serif;
+	/*border: 1px solid;*/
+	padding-top: 25px;
+	text-align: left;
+	width: 100%;
+	position: relative;
+
+}
+#tab-announcements .tab-content > p:first-child {
+	font-family: Roboto, sans-serif;
+
+}
+#tab-announcements .tab-content textarea {
+	resize: none;
+	width: 80%;
+	height: 100px;
+}
+#tab-announcements button#post-announcement {
+	width: 25%;
+	padding: 10px 25px;
+
+}
+
+
+
+/*Settings Tab*/
+
+#tab-settings .section-header {
+	display: inline;
+	border-bottom: 1px solid;
+	padding-bottom: 12px;
+}
+#tab-settings .section {
+	margin-top: 30px;
+}
+#tab-settings .section .profile-info {
+	font-family: Roboto, sans-serif;
+	font-size: 0.6em;
+}
+
+
+#tab-settings .tab-content .social-media-connect {
+	margin-top: 40px;
+}
+
+#tab-settings .split-container {
+	width: 100%;
+	margin-top: 30px;
+}
+#tab-settings .split-container .split-item {
+	display: inline-block;
+	width: 400px;
+	height: 200px;
+	border-right: 1px solid #bbb;
+	/*border-radius: 30px;*/
+	text-align: center;
+	padding: 30px 0px;
+	vertical-align: top;
+}
+#tab-settings .split-container .split-item:last-of-type {
+	border:none;
+}
+#tab-settings .split-container .split-item textarea {
+	resize: none;
+}
+#tab-settings .split-container .split-item {
+	font-size: 0.6em;
+}
+
+#tab-settings .split-container .logo-img {
+	width: 150px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+
+
+
+
+/*Social Media connect buttons*/
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+.social-media-connect button.social-media-button {
+  padding-right: 45px;
+  height: 35px;
+  background: none;
+  border: none;
+  background-size: 35px 35px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.5) -1px -1px 0;
+}
+
+button#facebook-connect {
+  border-color: #2d5073;
+  background-color: #3b5998;
+  background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+
+button#twitter-connect {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  background-image: url(https://g.twimg.com/Twitter_logo_white.png);
+}
+button#verify-twitter {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  width: 70px;
+  height: 50px;
+  text-align: center;
+  padding: 0;
+}
+

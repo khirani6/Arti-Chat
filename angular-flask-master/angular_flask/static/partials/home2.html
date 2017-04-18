@@ -1,19 +1,21 @@
 <div ng-mousemove="make_consistent()" ng-focus="make_consistent()">
     <div ng-show="isLoggedIn" id="home-tab-content">
-        <div id="home-tabs">
-        	<ul class="nav nav-pills">
-        		<li ng-class="{ active: isSet(1) }">
-        			<a href ng-click="setTab(1)">Dashboard</a>
-        		</li>
-        		<li ng-class="{ active: isSet(2) }">
-        			<a href ng-click="setTab(2)">Announcements</a>
-        		</li>
-        		<li ng-class="{ active: isSet(3) }">
-        			<a href ng-click="setTab(3)">Settings</a>
-        		</li>
-        	</ul>
+        <div style="border-bottom: 1px solid;">
+            <div id="main-header-abbr">Artisan-Hub.</div>
+            <div id="home-tabs">
+            	<ul class="nav nav-pills">
+            		<li ng-class="{ active: isSet(1) }">
+            			<a href ng-click="setTab(1)"><i class="fa fa-tasks fa-2x" aria-hidden="true"></i><p>Dashboard</p></a>
+            		</li>
+            		<li ng-class="{ active: isSet(2) }">
+            			<a href ng-click="setTab(2)"><i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i><p>Announcements</p></a>
+            		</li>
+            		<li ng-class="{ active: isSet(3) }">
+            			<a href ng-click="setTab(3)"><i class="fa fa-sliders fa-2x" aria-hidden="true"></i><p>Settings</p></a>
+            		</li>
+            	</ul>
+            </div>
         </div>
-
     	<div ng-show="isSet(2)" id="tab-announcements">
     		<div class="tab-content">
     			<p>What would you like to announce?</p>
@@ -21,27 +23,43 @@
     			<p>Where do you want to post?</p>
     			<div class="checkbox-div"><input type="checkbox" ng-click="fbClick()"> Facebook</div>
     			<div class="checkbox-div"><input type="checkbox" ng-click="twitterClick()"> Twitter</div>
-    			<button id="post-announcement" type="button" class="btn btn-success"
+    			<button id="post-announcement" type="button" class="btn"
                     ng-click="postAnnouncement()">Post</button>
     		</div>
-
-    		<p>Tab #2</p>
     	</div>
     	<div ng-show="isSet(3)" id="tab-settings">
-    		<img ng-src="{{user_data.results[0].image_url_75x75}}" />
-    		<div class="profile-info">
-    			<p>{{user_data.results[0].first_name}} {{user_data.results[0].last_name}}</p>
-    			<p>{{user_data.results[0].login_name}}</p>
-    			<p>{{user_data.results[0].gender}}</p>
-    		</div>
-            <button id="facebook-connect" ng-click="connectToFacebook()">Connect with Facebook</button>
-            <button id="login-with-twitter" ng-click="loginTwitterButtonPress()">
-                    Login with Twitter
-            </button>
-            <p>Enter PIN to verify Twitter Account</p>
-            <textarea ng-model="verifyTwitterText"></textarea>
-            <button id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
-    		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-primary">Logout</button>
+            <div class="tab-content">
+                <div class="user-profile">
+                    <p class="section-header">Etsy Profile</p><br />
+                	<div class="section">
+                        <img class="profile-img" ng-src="{{user_data.results[0].image_url_75x75}}" />
+                        <div class="profile-info">
+                    		<p style="font-weight: 700; font-size: 1.5em;">{{user_data.results[0].first_name}} {{user_data.results[0].last_name}}</p>
+                    		<p>{{user_data.results[0].login_name}}</p>
+                    		<p>{{user_data.results[0].gender}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-media-connect">
+                    <p class="section-header">Social Media Connections</p><br />
+                    <div class="split-container">
+                        <div class="split-item split-first">
+                            <img class="logo-img" src="/static/img/facebook.png" />
+                            <button class="social-media-button" id="facebook-connect" ng-click="connectToFacebook()">Login with Facebook</button>
+                        </div>
+                        <div class="split-item split-second">
+                            <img class="logo-img" src="/static/img/twitter.png" />
+                            <button class="social-media-button" id="twitter-connect" ng-click="loginTwitterButtonPress()">
+                                Login with Twitter
+                            </button>
+                            <p>Enter PIN to verify Twitter Account</p>
+                            <textarea ng-model="verifyTwitterText"></textarea>
+                            <button class="social-media-button" id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
+                        </div>
+                    </div>
+                </div>
+        		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-default"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+            </div>
     	</div>
 
     </div>
