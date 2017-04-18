@@ -149,7 +149,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             var possibleNames = ["kim", "george", "robert", "john", "james", "sarah", "mike", "justin", "angela"]
             for (var listing of $scope.shop_listings.results) {
                 for (var x = 0; x < 4; x++) {
-                    var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000)) + (1487225264 + 10000000)));
+                    var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000/2)) + (1487225264 + 10000000/2)));
                     var buyer_name = possibleNames[Math.floor(Math.random() * possibleNames.length)];
 
                     var quantity = Math.round((Math.random() * (1 - 10) + 10));
