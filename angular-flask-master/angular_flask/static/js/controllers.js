@@ -307,7 +307,8 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     }
 
     $scope.loginTwitterButtonPress = function () {
-        $window.location.href='/login3';
+        $window.open("/login3", "_blank");
+        // $window.location.href='/login3';
     }
 
     $scope.verifyTwitter = function () {

@@ -308,3 +308,31 @@ button#facebook-connect {
 	color: #F45800;
 	background-color: rgba(244, 88, 0, 0.1);
 }
+
+
+/* Announcements Tab */
+
+.tab-content {
+	font-family: Roboto, sans-serif;
+	/*border: 1px solid;*/
+	padding-top: 25px;
+	text-align: left;
+	width: 100%;
+
+}
+#tab-announcements .tab-content > p:first-child {
+	font-family: Roboto, sans-serif;
+
+}
+#tab-announcements .tab-content textarea {
+	resize: none;
+	width: 80%;
+	height: 100px;
+}
+#tab-announcements button#post-announcement {
+	width: 25%;
+	padding: 10px 25px;
+
+}
+
+
