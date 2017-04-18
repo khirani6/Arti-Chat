@@ -234,6 +234,10 @@ div[class^="col-"] {
 }
 #tab-settings #logout-button {
 	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-family: Roboto, sans-serif;
+	padding: 10px;
 }
 button#facebook-connect {
   border-color: #2d5073;
@@ -321,6 +325,7 @@ button#facebook-connect {
 	padding-top: 25px;
 	text-align: left;
 	width: 100%;
+	position: relative;
 
 }
 #tab-announcements .tab-content > p:first-child {
@@ -362,12 +367,81 @@ button#facebook-connect {
 
 #tab-settings .split-container {
 	width: 100%;
+	margin-top: 30px;
 }
-#tab-settings .split-container .split-first, #tab-settings .split-container .split-second {
+#tab-settings .split-container .split-item {
 	display: inline-block;
-	width: 49%;
+	width: 400px;
+	height: 200px;
+	border-right: 1px solid #bbb;
+	/*border-radius: 30px;*/
+	text-align: center;
+	padding: 30px 0px;
+	vertical-align: top;
+}
+#tab-settings .split-container .split-item:last-of-type {
+	border:none;
+}
+#tab-settings .split-container .split-item textarea {
+	resize: none;
+}
+#tab-settings .split-container .split-item {
+	font-size: 0.6em;
 }
 
-#tab-settings .split-containter .logo-img {
+#tab-settings .split-container .logo-img {
+	width: 150px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
 	
 }
+
+
+
+
+/*Social Media connect buttons*/
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+.social-media-connect button.social-media-button {
+  padding-right: 45px;
+  height: 35px;
+  background: none;
+  border: none;
+  background-size: 35px 35px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.5) -1px -1px 0;
+}
+
+button#facebook-connect {
+  border-color: #2d5073;
+  background-color: #3b5998;
+  background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+
+button#twitter-connect {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  background-image: url(https://g.twimg.com/Twitter_logo_white.png);
+}
+button#verify-twitter {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  width: 70px;
+  height: 50px;
+  text-align: center;
+  padding: 0;
+}
+

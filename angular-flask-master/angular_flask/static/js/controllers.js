@@ -47,6 +47,10 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.search = "";
 	$scope.tab = 1;
 
+
+    $scope.facebookConnected = false;
+    $scope.twitterConnected = false;
+
     $scope.transactionsListView = [];
 
     $scope.setTab = function(newTab) {
@@ -261,6 +265,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             facebookService.getPages().then(function(response) {
                 console.log("About to post message");
                 facebookService.postMessage("Hello, World");
+                $scope.facebookConnected = true;
             });
         });
     };
@@ -314,6 +319,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     $scope.verifyTwitter = function () {
         var url = "/verify-twitter/" + $scope.verifyTwitterText;
         $window.location.href = url;
+        $scope.twitterConnected = true;
     };
 
     $scope.randomString = function () {

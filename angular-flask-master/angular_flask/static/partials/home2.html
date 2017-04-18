@@ -43,22 +43,22 @@
                 <div class="social-media-connect">
                     <p class="section-header">Social Media Connections</p><br />
                     <div class="split-container">
-                        <div class="split-first">
+                        <div class="split-item split-first">
                             <img class="logo-img" src="/static/img/facebook.png" />
-                            <button id="facebook-connect" ng-click="connectToFacebook()">Connect with Facebook</button>
+                            <button class="social-media-button" id="facebook-connect" ng-click="connectToFacebook()">Login with Facebook</button>
                         </div>
-                        <div class="split-second">
+                        <div class="split-item split-second">
                             <img class="logo-img" src="/static/img/twitter.png" />
-                            <button id="login-with-twitter" ng-click="loginTwitterButtonPress()">
+                            <button class="social-media-button" id="twitter-connect" ng-click="loginTwitterButtonPress()">
                                 Login with Twitter
                             </button>
                             <p>Enter PIN to verify Twitter Account</p>
                             <textarea ng-model="verifyTwitterText"></textarea>
-                            <button id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
+                            <button class="social-media-button" id="verify-twitter" ng-click="verifyTwitter()">Verify Twitter</button>
                         </div>
                     </div>
                 </div>
-        		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-primary">Logout</button>
+        		<button id="logout-button" ng-click="logout()" type="button" class="btn btn-default"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
             </div>
     	</div>
 
