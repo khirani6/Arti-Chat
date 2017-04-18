@@ -276,3 +276,35 @@ button#facebook-connect {
 .fader.ng-hide-add {
   transition: all linear 500ms;
 }
+
+
+
+#main-header-abbr {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 4em;
+}
+
+#main-header-abbr, #home-tabs {
+	display: inline-block;
+}
+#main-header-abbr {
+	position: relative;
+	top: -50px;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+	color: #fff;
+	background-color: #FF721A;
+}
+
+.nav-pills > li > a {
+	color: #FF721A;
+	font-family: 'Roboto', sans-serif;
+}
+.nav-pills > li > a > p {
+	margin: 5px 0px;
+}
+.nav-pills > li > a:hover {
+	color: #F45800;
+	background-color: rgba(244, 88, 0, 0.1);
+}
