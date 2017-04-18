@@ -217,17 +217,20 @@ div[class^="col-"] {
 
 
 #tab-settings {
-	text-align: center;
+	/*text-align: center;*/
 }
 #tab-settings img, div.profile-info {
-	display: inline-block;
+	/*display: inline-block;*/
 }
-#tab-settings img {
-	width: 75px;
+#tab-settings img.profile-img {
+	width: 100px;
+	float: left;
+	margin-right: 20px;
 }
 
 #tab-settings div.profile-info {
 	width: 150px;
+	display: inline;
 }
 #tab-settings #logout-button {
 	position: absolute;
@@ -336,3 +339,35 @@ button#facebook-connect {
 }
 
 
+
+/*Settings Tab*/
+
+#tab-settings .section-header {
+	display: inline;
+	border-bottom: 1px solid;
+	padding-bottom: 12px;
+}
+#tab-settings .section {
+	margin-top: 30px;
+}
+#tab-settings .section .profile-info {
+	font-family: Roboto, sans-serif;
+	font-size: 0.6em;
+}
+
+
+#tab-settings .tab-content .social-media-connect {
+	margin-top: 40px;
+}
+
+#tab-settings .split-container {
+	width: 100%;
+}
+#tab-settings .split-container .split-first, #tab-settings .split-container .split-second {
+	display: inline-block;
+	width: 49%;
+}
+
+#tab-settings .split-containter .logo-img {
+	
+}
