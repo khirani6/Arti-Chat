@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("AngularFlask", ["ui.bootstrap", "ngRoute", "ngResource", "angularFlaskServices", "bootstrapLightbox", "angular-advanced-searchbox"])
+angular.module("AngularFlask", ["ui.bootstrap", "ngRoute", "ngResource", "ngAnimate", "angularFlaskServices", "bootstrapLightbox", "angular-advanced-searchbox"])
     .config(["$routeProvider", "$locationProvider", "$qProvider", "LightboxProvider",
     	function($routeProvider, $locationProvider, $qProvider, LightboxProvider) {
     		$routeProvider.when("/", {

@@ -147,42 +147,45 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
             //Testing Data
             var possibleStatuses = ["Awaiting payment.", "Shipped", "Not Shipped"];
             var possibleNames = ["kim", "george", "robert", "john", "james", "sarah", "mike", "justin", "angela"]
-            for (var listing of $scope.shop_listings.results) {
-                for (var x = 0; x < 4; x++) {
-                    var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000/2)) + (1487225264 + 10000000/2)));
-                    var buyer_name = possibleNames[Math.floor(Math.random() * possibleNames.length)];
+            if ($scope.shop_listings) {
+                for (var listing of $scope.shop_listings.results) {
+                    for (var x = 0; x < 4; x++) {
+                        var creation_tsz = Math.round((Math.random() * (1487225264 - (1487225264 + 10000000/2)) + (1487225264 + 10000000/2)));
+                        var buyer_name = possibleNames[Math.floor(Math.random() * possibleNames.length)];
 
-                    var quantity = Math.round((Math.random() * (1 - 10) + 10));
+                        var quantity = Math.round((Math.random() * (1 - 10) + 10));
 
-                    var test_trans = {
-                        buyer_user_id: -x,
-                        buyer_name: buyer_name,
-                        price: listing.price,
-                        quantity: quantity,
-                        cost: $scope.calculate_cost(listing.price, quantity),
-                        creation_tsz: creation_tsz,
-                        time:  $scope.epoch_seconds_to_local_time(creation_tsz),
-                        status: possibleStatuses[Math.round(Math.random() * (0 - 2) + 2)],
-                        listing_id: listing.listing_id,
-                        shipping_method: "USPS",
-                        receipt_id: $scope.randomReceipt()
-                    }
-
-                    for (var i = possibleNames.length-1; i >= 0; i--) {
-                        if (possibleNames[i] === buyer_name) {
-                            possibleNames.splice(i, 1);
+                        var test_trans = {
+                            buyer_user_id: -x,
+                            buyer_name: buyer_name,
+                            price: listing.price,
+                            quantity: quantity,
+                            cost: $scope.calculate_cost(listing.price, quantity),
+                            creation_tsz: creation_tsz,
+                            time:  $scope.epoch_seconds_to_local_time(creation_tsz),
+                            status: possibleStatuses[Math.round(Math.random() * (0 - 2) + 2)],
+                            listing_id: listing.listing_id,
+                            shipping_method: "USPS",
+                            receipt_id: $scope.randomReceipt()
                         }
+
+                        for (var i = possibleNames.length-1; i >= 0; i--) {
+                            if (possibleNames[i] === buyer_name) {
+                                possibleNames.splice(i, 1);
+                            }
+                        }
+                        test_trans["buyer_name"] += $scope.randomString();
+
+
+
+                        $scope.emails[test_trans.buyer_user_id] = $scope.randomString() + "@gmail.com";
+                        $scope.transactions[listing.listing_id].push(test_trans);
+                        $scope.transactionsListView.push(test_trans);
+                        //$scope.buyers[test_trans.buyer_user_id] = "hey";
                     }
-                    test_trans["buyer_name"] += $scope.randomString();
-
-
-
-                    $scope.emails[test_trans.buyer_user_id] = $scope.randomString() + "@gmail.com";
-                    $scope.transactions[listing.listing_id].push(test_trans);
-                    $scope.transactionsListView.push(test_trans);
-                    //$scope.buyers[test_trans.buyer_user_id] = "hey";
                 }
             }
+
 
             $scope.madeConsistent = true;
         }

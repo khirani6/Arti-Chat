@@ -259,3 +259,20 @@ button#facebook-connect {
 	50% { opacity:0; }
 	100% { opacity:1; }
 }
+
+.fader.ng-hide {
+  opacity: 0;
+}
+
+.fader.ng-hide-remove,
+.fader.ng-hide-add {
+  display: block !important;
+}
+
+.fader.ng-hide-remove {
+  transition: all linear 1000ms;
+}
+
+.fader.ng-hide-add {
+  transition: all linear 500ms;
+}
