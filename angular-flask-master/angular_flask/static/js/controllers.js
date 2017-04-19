@@ -353,7 +353,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     }
 
     $scope.randomUSPS = function() {
-        var text = "";
+        var text = "94";
         var possible = "0123456789";
 
         for (var i = 0; i < 22; i++) {
