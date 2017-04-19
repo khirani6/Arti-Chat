@@ -302,11 +302,13 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
     $scope.postAnnouncement = function() {
         if (fb) {
-            facebookService.postMessage($scope.announcementText);
-        }
-        if (twitter) {
-            var url = "/tweet/" + $scope.announcementText;
-            $window.location.href=url;
+            facebookService.postMessage($scope.announcementText)
+                .then(function (response) {
+                    if (twitter) {
+                        var url = "/tweet/" + $scope.announcementText;
+                        $window.location.href=url;
+                    }
+                });
         }
 
     }
