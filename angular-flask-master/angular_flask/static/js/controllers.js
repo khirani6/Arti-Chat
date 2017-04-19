@@ -164,13 +164,15 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                             buyer_name: buyer_name,
                             price: listing.price,
                             quantity: quantity,
-                            cost: $scope.calculate_cost(listing.price, quantity),
+                            cost: $scope.calculate_cost(listing.price, quantity, 1),
+                            grandtotal: $scope.calculate_cost(listing.price, quantity, 1) - 6,
                             creation_tsz: creation_tsz,
                             time:  $scope.epoch_seconds_to_local_time(creation_tsz),
                             status: possibleStatuses[Math.round(Math.random() * (0 - 2) + 2)],
                             listing_id: listing.listing_id,
                             shipping_method: "USPS",
-                            receipt_id: $scope.randomReceipt()
+                            receipt_id: $scope.randomReceipt(),
+                            tracking: null
                         }
 
                         for (var i = possibleNames.length-1; i >= 0; i--) {
@@ -179,10 +181,14 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
                             }
                         }
                         test_trans["buyer_name"] += $scope.randomString();
+                        if (test_trans.status === "Shipped") {
+                            test_trans.tracking = $scope.randomUSPS();
+                        }
 
 
 
                         $scope.emails[test_trans.buyer_user_id] = $scope.randomString() + "@gmail.com";
+
                         $scope.transactions[listing.listing_id].push(test_trans);
                         $scope.transactionsListView.push(test_trans);
                         //$scope.buyers[test_trans.buyer_user_id] = "hey";
@@ -215,7 +221,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         }
     }
 
-	$scope.logout = function () {
+	$scope.logout = function() {
         $rootScope.isLoggedIn = false;
         $scope.isLoggedIn = false;
 		$window.location.href= '/login';
@@ -227,11 +233,12 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         return (d.toLocaleDateString() + " @ " + d.toLocaleTimeString());
     };
 
-    $scope.calculate_cost = function(price, quantity) {
-        return (parseFloat(price) * quantity).toFixed(2);
+    $scope.calculate_cost = function(price, quantity, shipped) {
+        var s = (shipped != null) ? 3.73 : 0;
+        return (parseFloat(price) * quantity + s).toFixed(2);
     };
 
-    $scope.expand_order_details = function (transaction) {
+    $scope.expand_order_details = function(transaction) {
         var listing_id = transaction.listing_id;
         console.log(transaction);
         var image_url = $scope.thumbnails[listing_id][0].url_170x135;
@@ -244,6 +251,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         var receipt = $scope.receipts[transaction.receipt_id];
         console.log(receipt);
         Lightbox["shipped"] = transaction.status;
+        Lightbox["tracking"] = transaction.tracking;
         if (receipt) {
             Lightbox["shipping_method"] = receipt[0].shipping_details["shipping_method"];
         } else {
@@ -276,7 +284,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
     var fb = false;
     var twitter = false;
 
-    $scope.emailClick = function () {
+    $scope.emailClick = function() {
         if (email == true) {
             email = false;
         } else if (email == false) {
@@ -284,7 +292,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         }
     }
 
-    $scope.fbClick = function () {
+    $scope.fbClick = function() {
         if (fb == true) {
             fb = false;
         } else if (fb == false) {
@@ -292,7 +300,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         }
     }
 
-    $scope.twitterClick = function () {
+    $scope.twitterClick = function() {
         if (twitter == true) {
             twitter = false;
         } else if (twitter == false) {
@@ -300,7 +308,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         }
     }
 
-    $scope.postAnnouncement = function() {
+    $scope.postAnnouncement = function(){
         if (fb) {
             facebookService.postMessage($scope.announcementText);
         }
@@ -311,18 +319,18 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
 
     }
 
-    $scope.loginTwitterButtonPress = function () {
+    $scope.loginTwitterButtonPress = function() {
         $window.open("/login3", "_blank");
         // $window.location.href='/login3';
     }
 
-    $scope.verifyTwitter = function () {
+    $scope.verifyTwitter = function() {
         var url = "/verify-twitter/" + $scope.verifyTwitterText;
         $window.location.href = url;
         $scope.twitterConnected = true;
     };
 
-    $scope.randomString = function () {
+    $scope.randomString = function() {
         var text = "";
         var possible = "0123456789";
 
@@ -333,7 +341,7 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         return text;
     }
 
-    $scope.randomReceipt = function () {
+    $scope.randomReceipt = function() {
         var text = "";
         var possible = "0123456789";
 
@@ -342,6 +350,21 @@ function HomeController($scope, $window, $q, $http, Shops, $rootScope, ActiveSho
         }
 
         return text;
+    }
+
+    $scope.randomUSPS = function() {
+        var text = "";
+        var possible = "0123456789";
+
+        for (var i = 0; i < 22; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    }
+
+    $scope.setView = function (x) {
+        $scope.listView = (x == 0);
     }
     $scope.availableSearchParams = [
         { key: "price", name: "Price", placeholder: "Price..." },

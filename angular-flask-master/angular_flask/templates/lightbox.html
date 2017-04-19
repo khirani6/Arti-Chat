@@ -60,18 +60,15 @@
 
                 </td>
             </tr>
-            <tr>
+            <tr ng-show="Lightbox.shipped === 'Shipped'">
                 <td>
-                    <b>Shipping Status</b>
+                    <b>Tracking #</b>
                 </td>
 
                 <td>
-                    {{Lightbox.shipped}}
+                    {{Lightbox.tracking}}
                 </td>
 
-                <td>
-                    {{Lightbox.shipping_method}}
-                </td>
             </tr>
         </table>
     </div>
