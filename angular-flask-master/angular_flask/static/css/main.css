@@ -394,7 +394,7 @@ button#facebook-connect {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	
+
 }
 
 
@@ -445,3 +445,16 @@ button#verify-twitter {
   padding: 0;
 }
 
+.toggleButton {
+    border-color: #FF721A;
+    background-color: white;
+    border-radius: 10px;
+    text-color: ##FF721A;
+    color: #FF721A;
+    font-family: 'Roboto', sans-serif;
+}
+
+.toggle {
+    float: left;
+    display: inline;
+}

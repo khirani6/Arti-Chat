@@ -1,6 +1,6 @@
 <div ng-mousemove="make_consistent()" ng-focus="make_consistent()">
     <div ng-show="isLoggedIn" id="home-tab-content">
-        <div style="border-bottom: 1px solid;">
+        <div style="border-bottom: 1px solid #d3d3d3;">
             <div id="main-header-abbr">Artisan-Hub.</div>
             <div id="home-tabs">
             	<ul class="nav nav-pills">
@@ -67,9 +67,7 @@
 
     <div ng-show="isSet(1) && finished_loading && isLoggedIn" class="row" ng-mousemove="make_consistent()" ng-focus="make_consistent()">
 
-        <div>
-            <i ng-click="toggleListView()" class="glyphicon glyphicon-th-list">Toggle</i>
-        </div>
+        <br>
 
         <form>
             <div class="form-group" style="margin-left: 20%; margin-left:20%">
@@ -79,7 +77,41 @@
         <!--<nit-advanced-searchbox ng-model="searchParams" parameters="availableSearchParams" ng-mouseover="make_consistent()"
             placeholder="Search...">
         </nit-advanced-searchbox>-->
+        <!--<div ng-click="toggleListView()" style="float: right">
+            <button class="toggleButton">
+                <div ng-show="!listView">
 
+                    <p>Toggle Itemized View</p>
+                </div>
+                <div ng-hide="!listView">
+                    <i class="fa fa-th-list toggle" aria-hidden="true"></i>
+                    <p>Toggle List View</p>
+                </div>
+            </button>
+        </div>-->
+        <br> <br>
+        <div class="btn-group" style="float:right; padding-right: 4%">
+            <button type="button" class="btn btn-primary" ng-click="setView(1)">
+                <div ng-style="{'background-color': listView  ?  'black': 'white'}">
+                    <div ng-show="listView">
+                        <i class="fa fa-th-list toggle" aria-hidden="true"></i>
+                    </div>
+                    <div ng-hide="listView">
+                        <i class="fa fa-th-list toggle" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="setView(0)">
+                <div ng-style="{'background-color': listView  ?  'black !important': 'white !important'}">
+                    <div ng-show="!listView">
+                        <i class="fa fa-align-justify toggle" aria-hidden="true"></i>
+                    </div>
+                    <div ng-hide="!listView">
+                        <i class="fa fa-align-justify toggle" aria-hidden="true" style="color:white !important"></i>
+                    </div>
+                </div>
+            </button>
+        </div>
 
 
         <div ng-show="!listView" ng-repeat="listing in shop_listings.results" class="col-md-8 fader">
@@ -90,7 +122,7 @@
                         <h2>{{listing.title}}</h2>
                         <h5>${{listing.price}}</h5>
 
-                        <div ng-show="transactions[listing.listing_id]" style="margin-top: 20px">
+                        <div ng-show="transactions[listing.listing_id]" style="margin-top: 20px;">
                             <table class="table table-hover">
                                 <tr style="width: 100%">
                                     <th>Buyer</th>
@@ -101,12 +133,12 @@
                                 </tr>
                                 <tr ng-show="transaction" ng-repeat="transaction in transactions[listing.listing_id] | filter:search | orderBy : 'creation_tsz'" ng-click="expand_order_details(transaction)">
                                     <td>
-                                        <a href="mailto:{{emails[transaction.buyer_user_id]}}">
+                                        <a href="mailto:{{emails[transaction.buyer_user_id]}}" ng-click="$event.stopPropagation()">
                                             {{transaction.buyer_name || buyers[transaction.buyer_user_id][0].login_name}}
                                         </a>
                                     </td>
                                     <td>{{transaction.time}}</td>
-                                    <td>${{calculate_cost(transaction.price, transaction.quantity)}}</td>
+                                    <td>${{calculate_cost(transaction.price, transaction.quantity, null)}}</td>
                                     <td>{{transaction.quantity}}</td>
                                     <td>{{transaction.status}}</td>
                                 </tr>
