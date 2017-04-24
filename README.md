@@ -12,7 +12,8 @@ The "Arti-Chat_iOS" folder contains code from our final presentation/demo from F
 - Announcements Page for posting to social media- Settings page for managing social media integrations**Bug Fixes**
 - ​​No current bug fixes with current release**Known Bugs**
 - User is allowed to go directly to /home without logging into Etsy first- After logging into Facebook, have to click “Login with Facebook” one more time for the integration to actually work- Posting a message to Twitter & Facebook causes an error without logging in and authenticating your accounts first- Testing data occasionally fails to load when visiting the dashboard the first time.- The Etsy API key used is still in “development” status, so calls are rate limited, and the accounts allowed to log into Artisan–Hub are limited### Installation Information**Pre-Requisites & Dependent Libraries** (must be installed)
-- [Python3](​https://www.python.org/downloads/)​- [pip3](https://pip.pypa.io/en/latest/installing/)​ (should already be installed automatically with Python3)
+- [Python3](https://www.python.org/downloads/)
+- [pip3](https://pip.pypa.io/en/latest/installing/)​ (should already be installed automatically with Python3)
 **Download Instructions**
 Download this repository by clicking the “Clone or download” button on this page and selecting “Download ZIP.” Then unzip the downloaded file and move the “Arti-Chat” folder to wherever you desire.**Build Instructions & Installation**Using the command line, navigate to the “Arti-Chat” folder on your machine and then run the following commands:
 
